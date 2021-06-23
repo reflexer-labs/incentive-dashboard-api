@@ -11,7 +11,7 @@ rounds:
         description: "Mint + LP in the Uniswap v2 RAI/ETH Pool. More info: https://docs.reflexer.finance/incentives/rai-mint-+-lp-incentives-program" 
         link: https://app.uniswap.org/#/add/v2/0x03ab458634910aad20ef5f1c8ee96f1d6ac54919/ETH
         optional:
-          - apr: "123%" 
+          apr: "123%" 
 
       - from: 2021-06-21T12:50:00+00
         until: Ongoing
