@@ -1,13 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs"
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "lib",
+    "sourceMap": true,
+    "target": "ES2020",
+    "strictNullChecks": true,
+    "resolveJsonModule": true
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "types": [
-    "node",
-    "aws-sdk"
-  ]
+  "exclude": ["node_modules"]
 }

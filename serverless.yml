@@ -2,11 +2,9 @@ org: reflexer
 app: incentive-dashboard
 service: geb-incentives-dashboard
 
-frameworkVersion: ">=1.1.0 <2.0.0"
-
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs14.x
   region: eu-west-2
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
@@ -21,38 +19,22 @@ provider:
         - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
 
-functions:
-  create:
-    handler: todos/create.create
-    events:
-      - http:
-          path: todos
-          method: post
-          cors: true
+custom:
+  webpack:
+    webpackConfig: './webpack.config.js'
+    includeModules: true
 
-  list:
-    handler: todos/list.list
-    events:
-      - http:
-          path: todos
-          method: get
-          cors: true
-        
+plugins:
+  - 'serverless-webpack'
+
+functions:   
   get:
-    handler: todos/get.get
+    handler: src/get.get
     events:
       - http:
-          path: todos/{id}
+          path: /
           method: get
           cors: true
-        
-  update:
-    handler: todos/update.update
-    events:
-      - http:
-          path: todos/{id}
-          method: put
-          cors: true        
 
 resources:
   Resources:
