@@ -6,6 +6,7 @@ export interface Distro {
   amount: string;
   name: string;
   description: string;
+  link: string;
   optional: { [key: string]: string };
 }
 

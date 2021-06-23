@@ -1,8 +1,90 @@
 rounds:
+  - number: 4
+    name: Round 4
+    snapshotDate: TBD
+    distributionDate: TBD
+    distros:
+      - from: 2021-06-17T12:50:00+00
+        until: Ongoing
+        amount: 334 FLX/day
+        name: Uniswap V2 RAI/ETH LP + Minter
+        description: "Mint + LP in the Uniswap v2 RAI/ETH Pool. More info: https://docs.reflexer.finance/incentives/rai-mint-+-lp-incentives-program" 
+        link: https://app.uniswap.org/#/add/v2/0x03ab458634910aad20ef5f1c8ee96f1d6ac54919/ETH
+        optional:
+          - apr: "123%" 
+
+      - from: 2021-06-21T12:50:00+00
+        until: Ongoing
+        amount: 80 FLX/day
+        name: Uniswap V2 FLX/ETH
+        description: "Uniswap v2 FLX/ETH LP. More info: https://docs.reflexer.finance/incentives/flx-liquidity-incentives"
+        link: https://app.uniswap.org/#/add/v2/0x6243d8cea23066d098a15582d81a598b4e8391f4/ETH
+        optional: []
+
+      - from: 2021-06-23T12:50:00+00
+        until: Ongoing
+        amount: 65 FLX/day
+        name: Aave
+        description: RAI borrowers on Aave v2
+        link: https://app.aave.com/reserve-overview/RAI-0x03ab458634910aad20ef5f1c8ee96f1d6ac549190xb53c1a33016b2dc2ff3653530bff1848a515c8c5
+        optional: []
+
+      - from: 2021-06-17T12:50:00+00
+        until: Ongoing
+        amount: 15 FLX/day
+        name: Fuse
+        description: RAI borrowers (not lenders) in the Fuse RAI/FRAX/USDC/DAI pool 9
+        link: https://app.rari.capital/fuse/pool/9
+        optional: []
+
+      - from: 2021-06-17T12:50:00+00
+        until: Ongoing
+        amount: 10 FLX/day
+        name: Idle finance
+        description: RAI lenders on Idle Finance.
+        link: https://beta.idle.finance/#/dashboard/best/RAI
+        optional: []
+
+      - from: 2021-06-17T12:50:00+00
+        until: Ongoing
+        amount: 10 FLX/day
+        name: Kashi
+        description: RAI borrowers (not lenders) in the RAI/DAI Kashi pool. 
+        link: https://app.sushi.com/bento/kashi/borrow/0xa7c3304462b169c71f8edc894ea9d32879fb4823
+        optional: []
+      
+      - from: 2021-06-17T12:50:00+00
+        until: 2021-06-21T12:50:00+00
+        amount: 40 FLX/day
+        name: Uniswap V2 FLX/ETH
+        description: "Uniswap v2 FLX/ETH LP. More info: https://docs.reflexer.finance/incentives/flx-liquidity-incentives"
+        link: https://app.uniswap.org/#/add/v2/0x6243d8cea23066d098a15582d81a598b4e8391f4/ETH
+        optional: []
+
+      - from: 2021-06-17T12:50:00+00
+        until: 2021-06-23T12:50:00+00
+        amount: 15 FLX/day
+        name: Cream
+        description: RAI borrowers (not lenders) on Cream
+        link: https://app.cream.finance/
+        optional: []
+
+  - number: 3
+    name: Round 3
+    snapshotDate: 2021-06-17T12:50:00+00
+    distributionDate: 2021-06-22
+    starMessage: "* Ruler rewards will be distributed by the Ruler team"  
+    distros: []
+    
+  - number: 2
+    name: Round 2
+    snapshotDate: 2021-05-13T12:50:00+00
+    distributionDate: 2021-05-17
+    starMessage: "* Ruler rewards will be distributed by the Ruler team"
+    distros: []
+  
   - number: 1
     name: Round 1
     snapshotDate: 2021-04-15T12:50:00+00
     distributionDate: 2021-04-15
     distros: []
-    
-    
