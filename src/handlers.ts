@@ -1,11 +1,11 @@
 import { Handler } from "aws-lambda";
 import { DynamoDB } from "aws-sdk";
 import { createDoc } from "./job";
-import { DOCUMENT_KEY } from "./utils";
+import { DOCUMENT_KEY, DYNAMODB_TABLE } from "./utils";
 
 export const get: Handler = async (event: any) => {
   const params = {
-    TableName: process.env.DYNAMODB_TABLE as string,
+    TableName: DYNAMODB_TABLE as string,
     Key: {
       id: DOCUMENT_KEY,
     },
@@ -23,6 +23,7 @@ export const get: Handler = async (event: any) => {
     } else {
       try {
         const body = JSON.stringify(await createDoc());
+
         return {
           statusCode: 200,
           body,
@@ -36,10 +37,20 @@ export const get: Handler = async (event: any) => {
       }
     }
   } catch (err) {
+    console.log("Can't fetch from Dynamo DB");
     console.log(err.message);
+    try{
+      console.log(await createDoc())
+    } catch(err) {
+    console.log(err)
+    }
     return {
-      statusCode: 500,
-      body: "Fetching from DynamoDB",
+      statusCode: 200,
+      body: await createDoc(),
     };
   }
+};
+
+export const cron: Handler = async (event: any) => {
+  await createDoc();
 };

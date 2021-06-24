@@ -7,7 +7,7 @@
     "watch": "tsc -w",
     "lint": "tslint '*.ts'",
     "deploy": "sls deploy --stage v1",
-    "local": "serverless invoke local --stage v1 --function get"
+    "local": "serverless invoke local --stage v1 --function cron"
   },
   "keywords": [],
   "author": "",

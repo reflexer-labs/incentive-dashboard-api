@@ -8,6 +8,7 @@ provider:
   region: eu-west-2
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+    ETH_RPC: ${param:ETH_RPC}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -17,7 +18,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/doc"
 
 custom:
   webpack:
@@ -29,12 +30,18 @@ plugins:
 
 functions:   
   get:
-    handler: src/get.get
+    handler: src/handlers.get
     events:
       - http:
           path: /
           method: get
           cors: true
+  cron:
+    handler: src/handlers.cron
+    timeout: 240
+    events:
+      - schedule: 
+          rate: rate(10 minutes)
 
 resources:
   Resources:
@@ -53,4 +60,4 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+        TableName: doc

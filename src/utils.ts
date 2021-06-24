@@ -1,4 +1,39 @@
+import Axios from "axios";
+import { BigNumber } from "ethers";
+
 export const DOCUMENT_KEY = "doc";
+export const DYNAMODB_TABLE = "doc";
+
+export const coinGeckoPrice = async (id: string[]) => {
+  const res = await Axios.get(
+    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${id.join(",")}`
+  );
+  return res.data.map((x) => x.current_price) as number[];
+};
+
+export const bigNumberToNumber = (bn: BigNumber) => parseInt(bn.toString());
+
+export const formatPercent = (number: number) => number.toFixed(2);
+
+export const nFormatter = (num, digits) => {
+  const lookup = [
+    { value: 1, symbol: "" },
+    { value: 1e3, symbol: "k" },
+    { value: 1e6, symbol: "m" },
+    { value: 1e9, symbol: "b" },
+    { value: 1e12, symbol: "t" },
+    { value: 1e15, symbol: "p" },
+    { value: 1e18, symbol: "e" },
+  ];
+  const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+  var item = lookup
+    .slice()
+    .reverse()
+    .find(function (item) {
+      return num >= item.value;
+    });
+  return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
+};
 
 export interface Distro {
   from: string;
