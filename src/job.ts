@@ -7,9 +7,10 @@ import {
   formatPercent,
   nFormatter,
 } from "./utils";
-import { ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import { GebAdmin } from "@reflexer-finance/geb-admin";
 import { DynamoDB } from "aws-sdk";
+import { AAVE_RAI_GET_RESERVE_DATA_ABI } from "./abis";
 
 export const createDoc = async (): Promise<Document> => {
   const provider = new ethers.providers.StaticJsonRpcProvider(process.env.ETH_RPC);
@@ -18,15 +19,25 @@ export const createDoc = async (): Promise<Document> => {
   const valuesMap = new Map<string, string>();
 
   // == Blockchain multicall ==
+
+  // Uniswap
   const flxPoolRequest = geb.contracts.uniswapPairCoinEth.getReserves(true);
   flxPoolRequest.to = "0xd6F3768E62Ef92a9798E5A8cEdD2b78907cEceF9"; // uni-v2 eth flx
+
+  // Aave
   const aaveVariableDebt = geb.contracts.protocolToken.totalSupply(true);
   aaveVariableDebt.to = "0xB5385132EE8321977FfF44b60cDE9fE9AB0B4e6b"; // aave variable debt address
+  const aaveRaiAssetData = {
+    abi: AAVE_RAI_GET_RESERVE_DATA_ABI,
+    to: "0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9", // Aave lending pool
+    data: "0x35ea6a7500000000000000000000000003ab458634910aad20ef5f1c8ee96f1d6ac54919", // getReserveData(<RAI address>)
+  };
 
   const multicall = geb.multiCall([
     geb.contracts.uniswapPairCoinEth.getReserves(true),
     flxPoolRequest,
     aaveVariableDebt,
+    aaveRaiAssetData,
   ]);
 
   // == Execute all prmoises ==
@@ -41,7 +52,7 @@ export const createDoc = async (): Promise<Document> => {
   const raiInUniV2RaiEth = bigNumberToNumber(multiCallData[0]._reserve0) / 1e18;
   valuesMap.set(
     "UNI_V2_ETH_RAI_APR",
-    formatPercent(((334 * 365 * flxPrice) / (raiInUniV2RaiEth * 2 * raiPrice)) * 100)
+    formatPercent(((334 * 365 * flxPrice) / (raiInUniV2RaiEth * (1 + 2.5) * raiPrice)) * 100)
   );
 
   // Uniswap ETH/RAI pool size
@@ -57,8 +68,19 @@ export const createDoc = async (): Promise<Document> => {
   // Uniswap FLX/ETH pool size
   valuesMap.set("UNI_V2_FLX_ETH_POOL_SIZE", nFormatter(flxInUniV2FlxEth * 2 * flxPrice, 2));
 
-  // Aave pool size
-  valuesMap.set("AAVE_RAI_POOL_SIZE", nFormatter((bigNumberToNumber(multiCallData[2]) / 1e18) * raiPrice, 2));
+  // Aave
+  const aaveRaiReserveData = multiCallData[3] as any;
+  const totalRaiBorrow = bigNumberToNumber(multiCallData[2]) / 1e18;
+  valuesMap.set("AAVE_RAI_POOL_SIZE", nFormatter(totalRaiBorrow * raiPrice, 2));
+  valuesMap.set("AAVE_FLX_APR", formatPercent(65 * 365 * flxPrice / (totalRaiBorrow * raiPrice) * 0.75 * 100));
+  valuesMap.set(
+    "AAVE_RAI_SUPPLY_APY",
+    formatPercent((bigNumberToNumber(aaveRaiReserveData.currentLiquidityRate as BigNumber) / 1e27) * 100)
+  );
+  valuesMap.set(
+    "AAVE_RAI_BORROW_APY",
+    formatPercent((bigNumberToNumber(aaveRaiReserveData.currentVariableBorrowRate as BigNumber) / 1e27) * 100)
+  );
 
   setPropertyRecursive(rawDoc, valuesMap);
 
