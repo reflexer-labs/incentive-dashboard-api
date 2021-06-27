@@ -8,7 +8,8 @@ rounds:
         until: Ongoing
         amount: 334 FLX/day
         name: Uniswap V2 RAI/ETH LP + Minter
-        description: Mint + LP in the Uniswap v2 RAI/ETH Pool. More info <a href="https://docs.reflexer.finance/incentives/rai-mint-+-lp-incentives-program" target="_blank">here</a>
+        image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
+        description: Mint + LP in the Uniswap v2 RAI/ETH Pool. More <a href="https://docs.reflexer.finance/incentives/rai-mint-+-lp-incentives-program" target="_blank">here</a>
         link: https://app.uniswap.org/#/add/v2/0x03ab458634910aad20ef5f1c8ee96f1d6ac54919/ETH
         optional:
           APR: "{{UNI_V2_ETH_RAI_APR}}% + Uniswap fees (Assuming 250% safe cRatio)"
@@ -18,7 +19,8 @@ rounds:
         until: Ongoing
         amount: 80 FLX/day
         name: Uniswap V2 FLX/ETH
-        description: Uniswap v2 FLX/ETH LP. More info <a href="https://docs.reflexer.finance/incentives/flx-liquidity-incentives" target="_blank">here</a>
+        image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
+        description: Uniswap v2 FLX/ETH LP. More <a href="https://docs.reflexer.finance/incentives/flx-liquidity-incentives" target="_blank">here</a>
         link: https://app.uniswap.org/#/add/v2/0x6243d8cea23066d098a15582d81a598b4e8391f4/ETH
         optional:
           APR: "{{UNI_V2_FLX_ETH_APR}}% + Uniswap fees"
@@ -28,6 +30,7 @@ rounds:
         until: Ongoing
         amount: 65 FLX/day
         name: Aave
+        image: aaa
         description: RAI borrowers on Aave v2
         link: https://app.aave.com/reserve-overview/RAI-0x03ab458634910aad20ef5f1c8ee96f1d6ac549190xb53c1a33016b2dc2ff3653530bff1848a515c8c5
         optional:
@@ -40,6 +43,7 @@ rounds:
         until: Ongoing
         amount: 15 FLX/day
         name: Fuse
+        image: https://images.ctfassets.net/zql9qw49kkiw/Nk896mcOyp2fSNse6rhbT/aaeda9b0e9c011f6a5d78f48edb1e931/finallogo-onblack-copy.png
         description: RAI borrowers (not lenders) in the Fuse RAI/FRAX/USDC/DAI pool 9
         link: https://app.rari.capital/fuse/pool/9
         optional: {}
@@ -48,6 +52,7 @@ rounds:
         until: Ongoing
         amount: 10 FLX/day
         name: Idle finance
+        image: https://images.ctfassets.net/zql9qw49kkiw/5YXKF364bp0A53OT5p5335/1ee924502ceaddad9bdc23a6cb5aec10/spaces_-Lw-v0NTae0RVW1spR9R_avatar.png
         description: RAI lenders on Idle Finance.
         link: https://beta.idle.finance/#/dashboard/best/RAI
         optional: {}
@@ -56,6 +61,7 @@ rounds:
         until: Ongoing
         amount: 10 FLX/day
         name: Kashi
+        image: https://images.ctfassets.net/zql9qw49kkiw/7b3MiabKgJcl302OYuwVdX/36f6e89b5574e31a6ddf0ef250d22a41/sushiswap.png
         description: RAI borrowers (not lenders) in the RAI/DAI Kashi pool. 
         link: https://app.sushi.com/bento/kashi/borrow/0xa7c3304462b169c71f8edc894ea9d32879fb4823
         optional: {}
@@ -64,7 +70,8 @@ rounds:
         until: 2021-06-21T12:50Z
         amount: 40 FLX/day
         name: Uniswap V2 FLX/ETH
-        description: Uniswap v2 FLX/ETH LP. More info <a href="https://docs.reflexer.finance/incentives/flx-liquidity-incentives" target="_blank">here</a>
+        image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
+        description: Uniswap v2 FLX/ETH LP. More <a href="https://docs.reflexer.finance/incentives/flx-liquidity-incentives" target="_blank">here</a>
         link: https://app.uniswap.org/#/add/v2/0x6243d8cea23066d098a15582d81a598b4e8391f4/ETH
         optional: {}
 
@@ -72,6 +79,7 @@ rounds:
         until: 2021-06-23T12:50Z
         amount: 15 FLX/day
         name: Cream
+        image: https://images.ctfassets.net/zql9qw49kkiw/7koUBquQfc9rowFqlnVb2d/f0667e9f1eeaa03a28a527cb59be991a/cream-finance-cream-logo.png
         description: RAI borrowers (not lenders) on Cream
         link: https://app.cream.finance/
         optional: {}

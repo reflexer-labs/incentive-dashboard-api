@@ -48,6 +48,7 @@ export interface Distro {
 export interface Round {
   number: number;
   name: string;
+  image: string;
   distros: Distro[];
   snapshotDate: string;
   distributionDate: string;
