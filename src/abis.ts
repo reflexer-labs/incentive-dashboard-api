@@ -30,3 +30,64 @@ export const AAVE_RAI_GET_RESERVE_DATA_ABI = {
   stateMutability: "view",
   type: "function",
 };
+
+export const IDLE_GET_APR_ABI = {
+  constant: true,
+  inputs: [],
+  name: "getAvgAPR",
+  outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+  payable: false,
+  stateMutability: "view",
+  type: "function",
+};
+
+export const IDLE_TOKEN_PRICE = {
+  constant: true,
+  inputs: [],
+  name: "tokenPrice",
+  outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+  payable: false,
+  stateMutability: "view",
+  type: "function",
+};
+
+export const FUSE_TOTAL_BORROW = {
+  constant: true,
+  inputs: [],
+  name: "totalBorrows",
+  outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+  payable: false,
+  stateMutability: "view",
+  type: "function",
+};
+
+export const FUSE_BORROW_RATE = {
+  constant: true,
+  inputs: [],
+  name: "borrowRatePerBlock",
+  outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+  payable: false,
+  stateMutability: "view",
+  type: "function",
+};
+
+export const FUSE_SUPPLY_RATE = {
+  constant: true,
+  inputs: [],
+  name: "supplyRatePerBlock",
+  outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+  payable: false,
+  stateMutability: "view",
+  type: "function",
+};
+
+export const KASHI_TOTAL_BORROW = {
+  inputs: [],
+  name: "totalBorrow",
+  outputs: [
+    { internalType: "uint128", name: "elastic", type: "uint128" },
+    { internalType: "uint128", name: "base", type: "uint128" },
+  ],
+  stateMutability: "view",
+  type: "function",
+};

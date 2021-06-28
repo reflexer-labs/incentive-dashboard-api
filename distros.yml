@@ -35,8 +35,8 @@ rounds:
         link: https://app.aave.com/reserve-overview/RAI-0x03ab458634910aad20ef5f1c8ee96f1d6ac549190xb53c1a33016b2dc2ff3653530bff1848a515c8c5
         optional:
           Total RAI borrows: "${{AAVE_RAI_POOL_SIZE}}"
-          RAI borrow APY: "{{AAVE_RAI_SUPPLY_APY}}%"
-          RAI supply APY: "{{AAVE_RAI_BORROW_APY}}%"
+          RAI supply APY: "{{AAVE_RAI_SUPPLY_APY}}%"
+          RAI borrow APY: "{{AAVE_RAI_BORROW_APY}}%"
           FLX APR: "{{AAVE_FLX_APR}}% (At 75% LTV, not including borrow APY)"
 
       - from: 2021-06-17T12:50Z
@@ -46,7 +46,11 @@ rounds:
         image: https://images.ctfassets.net/zql9qw49kkiw/Nk896mcOyp2fSNse6rhbT/aaeda9b0e9c011f6a5d78f48edb1e931/finallogo-onblack-copy.png
         description: RAI borrowers (not lenders) in the Fuse RAI/FRAX/USDC/DAI pool 9
         link: https://app.rari.capital/fuse/pool/9
-        optional: {}
+        optional:
+          Total RAI borrows: "${{FUSE_RAI_POOL_SIZE}}"
+          RAI supply APY: "{{FUSE_RAI_SUPPLY_APY}}%"
+          RAI borrow APY: "{{FUSE_RAI_BORROW_APY}}%"
+          FLX APR: "{{FUSE_FLX_APR}}% (At 75% LTV, not including borrow APY)"
 
       - from: 2021-06-17T12:50Z
         until: Ongoing
@@ -55,7 +59,9 @@ rounds:
         image: https://images.ctfassets.net/zql9qw49kkiw/5YXKF364bp0A53OT5p5335/1ee924502ceaddad9bdc23a6cb5aec10/spaces_-Lw-v0NTae0RVW1spR9R_avatar.png
         description: RAI lenders on Idle Finance.
         link: https://beta.idle.finance/#/dashboard/best/RAI
-        optional: {}
+        optional:
+          Pool Size: "${{IDLE_POOL_SIZE}}"
+          APR: "{{IDLE_APR}}"
 
       - from: 2021-06-17T12:50Z
         until: Ongoing
@@ -64,8 +70,11 @@ rounds:
         image: https://images.ctfassets.net/zql9qw49kkiw/7b3MiabKgJcl302OYuwVdX/36f6e89b5574e31a6ddf0ef250d22a41/sushiswap.png
         description: RAI borrowers (not lenders) in the RAI/DAI Kashi pool. 
         link: https://app.sushi.com/bento/kashi/borrow/0xa7c3304462b169c71f8edc894ea9d32879fb4823
-        optional: {}
-      
+        optional: 
+          Total RAI borrows: "${{KASHI_TOTAL_BORROWS}}"
+          FLX APR: "{{KASHI_FLX_APR}}% (At 75% LTV, not including borrow APY)"
+
+
       - from: 2021-06-17T12:50Z
         until: 2021-06-21T12:50Z
         amount: 40 FLX/day
