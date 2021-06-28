@@ -33,8 +33,8 @@ export const createDoc = async (): Promise<Document> => {
   flxPoolRequest.to = "0xd6F3768E62Ef92a9798E5A8cEdD2b78907cEceF9"; // uni-v2 eth flx
 
   // Aave
-  const aaveVariableDebt = geb.contracts.protocolToken.totalSupply(true);
-  aaveVariableDebt.to = "0xB5385132EE8321977FfF44b60cDE9fE9AB0B4e6b"; // aave variable debt address
+  const aaveVariableDebtRequest = geb.contracts.protocolToken.totalSupply(true);
+  aaveVariableDebtRequest.to = "0xB5385132EE8321977FfF44b60cDE9fE9AB0B4e6b"; // aave variable debt address
   const aaveRaiAssetData = {
     abi: AAVE_RAI_GET_RESERVE_DATA_ABI,
     to: "0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9", // Aave lending pool
@@ -48,7 +48,7 @@ export const createDoc = async (): Promise<Document> => {
     data: "0x1f80b18a", // getAvgAPR()
   };
   const idleRaiTotalSupplyRequest = geb.contracts.protocolToken.totalSupply(true);
-  aaveVariableDebt.to = "0x5C960a3DCC01BE8a0f49c02A8ceBCAcf5D07fABe"; // IdleRai token
+  idleRaiTotalSupplyRequest.to = "0x5C960a3DCC01BE8a0f49c02A8ceBCAcf5D07fABe"; // IdleRai token
   const idleTokenPriceRequest = {
     abi: IDLE_TOKEN_PRICE,
     to: "0x5C960a3DCC01BE8a0f49c02A8ceBCAcf5D07fABe",
@@ -88,7 +88,7 @@ export const createDoc = async (): Promise<Document> => {
     flxPoolRequest, // 1
 
     // Aave
-    aaveVariableDebt, // 2
+    aaveVariableDebtRequest, // 2
     aaveRaiAssetData, // 3
 
     // Idle
