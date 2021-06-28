@@ -30,7 +30,7 @@ rounds:
         until: Ongoing
         amount: 65 FLX/day
         name: Aave
-        image: aaa
+        image: https://images.ctfassets.net/zql9qw49kkiw/6nP27R0M7Nl3LPaBMMNC08/954b4692406149d6277035c1088eda0d/aave-aave-logo.png
         description: RAI borrowers on Aave v2
         link: https://app.aave.com/reserve-overview/RAI-0x03ab458634910aad20ef5f1c8ee96f1d6ac549190xb53c1a33016b2dc2ff3653530bff1848a515c8c5
         optional:
@@ -51,7 +51,7 @@ rounds:
       - from: 2021-06-17T12:50Z
         until: Ongoing
         amount: 10 FLX/day
-        name: Idle finance
+        name: Idle
         image: https://images.ctfassets.net/zql9qw49kkiw/5YXKF364bp0A53OT5p5335/1ee924502ceaddad9bdc23a6cb5aec10/spaces_-Lw-v0NTae0RVW1spR9R_avatar.png
         description: RAI lenders on Idle Finance.
         link: https://beta.idle.finance/#/dashboard/best/RAI
