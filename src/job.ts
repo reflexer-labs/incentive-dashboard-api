@@ -138,7 +138,7 @@ export const createDoc = async (): Promise<Document> => {
   valuesMap.set("AAVE_RAI_POOL_SIZE", nFormatter(totalRaiBorrow * raiPrice, 2));
   valuesMap.set(
     "AAVE_FLX_APR",
-    formatPercent(((65 * 365 * flxPrice) / (totalRaiBorrow * raiPrice)) * 0.75 * 100)
+    formatPercent(((65 * 365 * flxPrice) / (totalRaiBorrow * raiPrice)) * 0.65 * 100)
   );
   valuesMap.set(
     "AAVE_RAI_SUPPLY_APY",
@@ -168,7 +168,7 @@ export const createDoc = async (): Promise<Document> => {
   valuesMap.set("FUSE_RAI_POOL_SIZE", nFormatter(totalRaiBorrow * raiPrice, 2));
   valuesMap.set(
     "FUSE_FLX_APR",
-    formatPercent(((15 * 365 * flxPrice) / (totalRaiBorrow * raiPrice)) * 0.75 * 100)
+    formatPercent(((15 * 365 * flxPrice) / (totalRaiBorrow * raiPrice)) * 0.65 * 100)
   );
 
   const blockRateToYearlyRate = (blockRate: BigNumber) =>
@@ -179,7 +179,7 @@ export const createDoc = async (): Promise<Document> => {
   // Kashi -- total borrow
   const kashiTotalBorrow = (bigNumberToNumber(multiCallData[10].elastic) / 1e18) * raiPrice;
   valuesMap.set("KASHI_TOTAL_BORROWS", nFormatter(kashiTotalBorrow, 2));
-  valuesMap.set("KASHI_FLX_APR", formatPercent((10 * 365 * flxPrice * 100 * 0.75) / kashiTotalBorrow));
+  valuesMap.set("KASHI_FLX_APR", formatPercent((10 * 365 * flxPrice * 100 * 0.65) / kashiTotalBorrow));
 
   setPropertyRecursive(rawDoc, valuesMap);
   // == Store in DynamoDB

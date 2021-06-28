@@ -37,7 +37,7 @@ rounds:
           Total RAI borrows: "${{AAVE_RAI_POOL_SIZE}}"
           RAI supply APY: "{{AAVE_RAI_SUPPLY_APY}}%"
           RAI borrow APY: "{{AAVE_RAI_BORROW_APY}}%"
-          FLX APR: "{{AAVE_FLX_APR}}% (At 75% LTV, not including borrow APY)"
+          FLX APR: "{{AAVE_FLX_APR}}% (At 65% LTV, not including borrow APY)"
 
       - from: 2021-06-17T12:50Z
         until: Ongoing
@@ -50,7 +50,7 @@ rounds:
           Total RAI borrows: "${{FUSE_RAI_POOL_SIZE}}"
           RAI supply APY: "{{FUSE_RAI_SUPPLY_APY}}%"
           RAI borrow APY: "{{FUSE_RAI_BORROW_APY}}%"
-          FLX APR: "{{FUSE_FLX_APR}}% (At 75% LTV, not including borrow APY)"
+          FLX APR: "{{FUSE_FLX_APR}}% (At 65% LTV, not including borrow APY)"
 
       - from: 2021-06-17T12:50Z
         until: Ongoing
@@ -72,7 +72,7 @@ rounds:
         link: https://app.sushi.com/bento/kashi/borrow/0xa7c3304462b169c71f8edc894ea9d32879fb4823
         optional: 
           Total RAI borrows: "${{KASHI_TOTAL_BORROWS}}"
-          FLX APR: "{{KASHI_FLX_APR}}% (At 75% LTV, not including borrow APY)"
+          FLX APR: "{{KASHI_FLX_APR}}% (At 65% LTV, not including borrow APY)"
 
 
       - from: 2021-06-17T12:50Z
