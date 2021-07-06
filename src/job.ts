@@ -162,6 +162,12 @@ export const createDoc = async (): Promise<Document> => {
       bigNumberToNumber(multiCallData[4] as any) / 1e18
     )}% Lending APY`
   );
+  valuesMap.set(
+    "IDLE_APR_TOTAL",
+    formatPercent(
+      (10 * 365 * flxPrice * 100) / idlePoolSize + bigNumberToNumber(multiCallData[4] as any) / 1e18
+    )
+  );
 
   // Fuse Total borrows
   totalRaiBorrow = bigNumberToNumber(multiCallData[7]) / 1e18;
