@@ -57,8 +57,8 @@ rounds:
         apy_description: "Assuming 65% LTV, not including borrow APY"
         optional:
           Total RAI borrows: "${{FUSE_RAI_POOL_SIZE}}"
-          RAI supply APY: "{{FUSE_RAI_SUPPLY_APY}}%"
-          RAI borrow APY: "{{FUSE_RAI_BORROW_APY}}%"
+          # RAI supply APY: "{{FUSE_RAI_SUPPLY_APY}}%"
+          # RAI borrow APY: "{{FUSE_RAI_BORROW_APY}}%"
 
       - from: 2021-06-17T12:50Z
         until: Ongoing
