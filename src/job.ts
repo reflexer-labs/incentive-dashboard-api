@@ -17,7 +17,6 @@ import {
   FUSE_TOTAL_BORROW,
   IDLE_GET_APR_ABI,
   IDLE_TOKEN_PRICE,
-  KASHI_TOTAL_BORROW,
 } from "./abis";
 
 export const createDoc = async (): Promise<Document> => {
@@ -74,13 +73,6 @@ export const createDoc = async (): Promise<Document> => {
     data: "0xae9d70b0", // supplyRatePerBlock()
   };
 
-  // Kashi
-  const kashiTotalBorrowRequest = {
-    abi: KASHI_TOTAL_BORROW,
-    to: "0xA7c3304462b169C71F8EdC894Ea9d32879Fb4823",
-    data: "0x8285ef40",
-  };
-
   // @ts-ignore
   const multicall = geb.multiCall([
     // uniswap
@@ -99,9 +91,6 @@ export const createDoc = async (): Promise<Document> => {
     fuseTotalBorrowRequest, // 7
     fuseBorrowRateRequest, // 8
     fuseSupplyRateRequest, // 9
-
-    // Kashi
-    kashiTotalBorrowRequest, // 10
   ]) as any[];
 
   // == Execute all prmoises ==
@@ -126,7 +115,7 @@ export const createDoc = async (): Promise<Document> => {
   const flxInUniV2FlxEth = bigNumberToNumber(multiCallData[1]._reserve0) / 1e18;
   valuesMap.set(
     "UNI_V2_FLX_ETH_APR",
-    formatPercent(((80 * 365 * flxPrice) / (flxInUniV2FlxEth * 2 * flxPrice)) * 100)
+    formatPercent(((90 * 365 * flxPrice) / (flxInUniV2FlxEth * 2 * flxPrice)) * 100)
   );
 
   // Uniswap -- FLX/ETH pool size
@@ -181,11 +170,6 @@ export const createDoc = async (): Promise<Document> => {
     formatPercent((((bigNumberToNumber(blockRate) * 3600 * 24) / 13 / 1e18 + 1) ** 365 - 1) * 100);
   valuesMap.set("FUSE_RAI_SUPPLY_APY", blockRateToYearlyRate(multiCallData[9]));
   valuesMap.set("FUSE_RAI_BORROW_APY", blockRateToYearlyRate(multiCallData[8]));
-
-  // Kashi -- total borrow
-  const kashiTotalBorrow = (bigNumberToNumber(multiCallData[10].elastic) / 1e18) * raiPrice;
-  valuesMap.set("KASHI_TOTAL_BORROWS", nFormatter(kashiTotalBorrow, 2));
-  valuesMap.set("KASHI_FLX_APR", formatPercent((10 * 365 * flxPrice * 100 * 0.65) / kashiTotalBorrow));
 
   setPropertyRecursive(rawDoc, valuesMap);
   // == Store in DynamoDB

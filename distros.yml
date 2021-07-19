@@ -1,6 +1,6 @@
 rounds:
-  - number: 4
-    name: Round 4
+  - number: 5
+    name: Round 5
     snapshotDate: TBD
     distributionDate: TBD
     distros:
@@ -19,7 +19,7 @@ rounds:
 
       - from: 2021-06-21T12:50Z
         until: Ongoing
-        amount: 80 FLX/day
+        amount: 90 FLX/day
         name: Uniswap V2 FLX/ETH
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
         description: Uniswap v2 FLX/ETH LP. More <a href="https://docs.reflexer.finance/incentives/flx-liquidity-incentives" target="_blank">here</a>
@@ -74,34 +74,12 @@ rounds:
           Pool Size: "${{IDLE_POOL_SIZE}}"
 
       - from: 2021-06-17T12:50Z
-        until: Ongoing
+        until: 2021-07-21T12:50Z
         amount: 10 FLX/day
         name: Kashi
         image: https://images.ctfassets.net/zql9qw49kkiw/7b3MiabKgJcl302OYuwVdX/36f6e89b5574e31a6ddf0ef250d22a41/sushiswap.png
         description: RAI borrowers (not lenders) in the RAI/DAI Kashi pool. 
         link: https://app.sushi.com/bento/kashi/borrow/0xa7c3304462b169c71f8edc894ea9d32879fb4823
-        apy: "{{KASHI_FLX_APR}}%"
-        apy_title: "APR"
-        apy_description: "Assuming 65% LTV, not including borrow APY"
-        optional: 
-          Total RAI borrows: "${{KASHI_TOTAL_BORROWS}}"
-
-      - from: 2021-06-17T12:50Z
-        until: 2021-06-21T12:50Z
-        amount: 40 FLX/day
-        name: Uniswap V2 FLX/ETH
-        image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
-        description: Uniswap v2 FLX/ETH LP. More <a href="https://docs.reflexer.finance/incentives/flx-liquidity-incentives" target="_blank">here</a>
-        link: https://app.uniswap.org/#/add/v2/0x6243d8cea23066d098a15582d81a598b4e8391f4/ETH
-        optional: {}
-
-      - from: 2021-06-17T12:50Z
-        until: 2021-06-23T12:50Z
-        amount: 15 FLX/day
-        name: Cream
-        image: https://images.ctfassets.net/zql9qw49kkiw/7koUBquQfc9rowFqlnVb2d/f0667e9f1eeaa03a28a527cb59be991a/cream-finance-cream-logo.png
-        description: RAI borrowers (not lenders) on Cream
-        link: https://app.cream.finance/
         optional: {}
 
   # Other rounds...
