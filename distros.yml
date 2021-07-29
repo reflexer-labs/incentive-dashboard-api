@@ -50,7 +50,7 @@ rounds:
         amount: 15 FLX/day
         name: Fuse
         image: https://images.ctfassets.net/zql9qw49kkiw/Nk896mcOyp2fSNse6rhbT/aaeda9b0e9c011f6a5d78f48edb1e931/finallogo-onblack-copy.png
-        description: RAI borrowers (not lenders) in the Fuse RAI/FRAX/USDC/DAI pool 9
+        description: RAI borrowers in the Fuse pool 9 that are using USDC, DAI or FRAX as collateral.
         link: https://app.rari.capital/fuse/pool/9
         apy: "{{FUSE_FLX_APR}}%"
         apy_title: "APR"
@@ -73,14 +73,13 @@ rounds:
         optional:
           Pool Size: "${{IDLE_POOL_SIZE}}"
 
-      - from: 2021-06-17T12:50Z
-        until: 2021-07-21T12:50Z
-        amount: 10 FLX/day
-        name: Kashi
-        image: https://images.ctfassets.net/zql9qw49kkiw/7b3MiabKgJcl302OYuwVdX/36f6e89b5574e31a6ddf0ef250d22a41/sushiswap.png
-        description: RAI borrowers (not lenders) in the RAI/DAI Kashi pool. 
-        link: https://app.sushi.com/bento/kashi/borrow/0xa7c3304462b169c71f8edc894ea9d32879fb4823
-        optional: {}
+      - from: 2021-07-23T12:50Z
+        until: Ongoing
+        amount: 50 FLX/day
+        name: Uniswap V2 RAI/ETH LP + Minter
+        image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
+        description: Mint + LP in the 0.05% Uniswap v3 RAI/DAI Pool. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
+        link: https://app.uniswap.org/#/add/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/0x6B175474E89094C44Da98b954EedeAC495271d0F/500
 
   # Other rounds...
   # - number: 3
