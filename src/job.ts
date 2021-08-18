@@ -19,6 +19,8 @@ import {
   IDLE_TOKEN_PRICE,
 } from "./abis";
 
+const BLOCK_INTERVAL = 13;
+
 export const createDoc = async (): Promise<Document> => {
   const provider = new ethers.providers.StaticJsonRpcProvider(process.env.ETH_RPC);
   const geb = new GebAdmin("mainnet", provider);
@@ -28,8 +30,11 @@ export const createDoc = async (): Promise<Document> => {
   // == Blockchain multicall ==
 
   // Uniswap
-  const flxPoolRequest = geb.contracts.uniswapPairCoinEth.getReserves(true);
-  flxPoolRequest.to = "0xd6F3768E62Ef92a9798E5A8cEdD2b78907cEceF9"; // uni-v2 eth flx
+  const flxEthReservesRequest = geb.contracts.uniswapPairCoinEth.getReserves(true);
+  flxEthReservesRequest.to = "0xd6F3768E62Ef92a9798E5A8cEdD2b78907cEceF9"; // uni-v2 eth flx
+
+  const flxEthLpTotalSupplyRequest = geb.contracts.uniswapPairCoinEth.totalSupply(true);
+  flxEthLpTotalSupplyRequest.to = "0xd6F3768E62Ef92a9798E5A8cEdD2b78907cEceF9"; // uni-v2 eth flx
 
   // Aave
   const aaveVariableDebtRequest = geb.contracts.protocolToken.totalSupply(true);
@@ -77,7 +82,7 @@ export const createDoc = async (): Promise<Document> => {
   const multicall = geb.multiCall([
     // uniswap
     geb.contracts.uniswapPairCoinEth.getReserves(true), // 0
-    flxPoolRequest, // 1
+    flxEthReservesRequest, // 1
 
     // Aave
     aaveVariableDebtRequest, // 2
@@ -88,9 +93,16 @@ export const createDoc = async (): Promise<Document> => {
     idleRaiTotalSupplyRequest, // 5
     idleTokenPriceRequest, // 6
 
+    // Fuse
     fuseTotalBorrowRequest, // 7
     fuseBorrowRateRequest, // 8
     fuseSupplyRateRequest, // 9
+
+    // FLX staking
+    geb.contracts.stakingFirstResort.rewardRate(true), // 10
+    geb.contracts.stakingToken.totalSupply(true), // 11
+    flxEthLpTotalSupplyRequest, // 12
+    geb.contracts.stakingFirstResort.stakedSupply(true), // 13
   ]) as any[];
 
   // == Execute all prmoises ==
@@ -119,7 +131,8 @@ export const createDoc = async (): Promise<Document> => {
   );
 
   // Uniswap -- FLX/ETH pool size
-  valuesMap.set("UNI_V2_FLX_ETH_POOL_SIZE", nFormatter(flxInUniV2FlxEth * 2 * flxPrice, 2));
+  const flxEthPoolSize = flxInUniV2FlxEth * 2 * flxPrice;
+  valuesMap.set("UNI_V2_FLX_ETH_POOL_SIZE", nFormatter(flxEthPoolSize, 2));
 
   // Aave
   const aaveRaiReserveData = multiCallData[3] as any;
@@ -171,6 +184,16 @@ export const createDoc = async (): Promise<Document> => {
   valuesMap.set("FUSE_RAI_SUPPLY_APY", blockRateToYearlyRate(multiCallData[9]));
   valuesMap.set("FUSE_RAI_BORROW_APY", blockRateToYearlyRate(multiCallData[8]));
 
+  // FLX stakers APR
+  const annualRewards = (bigNumberToNumber(multiCallData[10]) / 1e18) * 365 * 3600 * 24;
+  const stakingSharesTotalSUpply = bigNumberToNumber(multiCallData[11]) / 1e18;
+  const stakingAPR = ((annualRewards / BLOCK_INTERVAL) * stakingSharesTotalSUpply) / (flxInUniV2FlxEth * 2);
+  valuesMap.set("FLX_STAKING_APR", formatPercent(stakingAPR * 100));
+
+  const lpSharesInStaking = bigNumberToNumber(multiCallData[13]) / 1e18;
+  const lpShareTotal = bigNumberToNumber(multiCallData[12]) / 1e18;
+  valuesMap.set("FLX_STAKING_POOL_SIZE", nFormatter((flxEthPoolSize * lpSharesInStaking) / lpShareTotal, 2));
+  
   setPropertyRecursive(rawDoc, valuesMap);
   // == Store in DynamoDB
   const params = {

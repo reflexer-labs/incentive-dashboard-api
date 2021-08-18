@@ -17,6 +17,19 @@ rounds:
         optional:
           Pool size: ${{UNI_V2_ETH_RAI_POOL_SIZE}}
 
+      - from: 2021-08-18T12:50Z
+        until: Ongoing
+        amount: 50 FLX/day
+        name: FLX/ETH Uniswap v2 stakers
+        image: https://app.reflexer.finance/static/media/stFLX.f0676c46.svg
+        description: Uniswap v2 FLX/ETH LP stakers. More <a href="https://docs.reflexer.finance/incentives/flx-staking" target="_blank">here</a>
+        link: https://app.reflexer.finance/earn/staking
+        apy: "{{FLX_STAKING_APR}}%"
+        apy_title: "APR"
+        apy_description: "FLX APR only, does not include fee revenue and potential impermanent loss."
+        optional:
+          Pool size: ${{FLX_STAKING_POOL_SIZE}}
+      
       - from: 2021-06-21T12:50Z
         until: Ongoing
         amount: 90 FLX/day
