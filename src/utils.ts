@@ -35,6 +35,19 @@ export const nFormatter = (num, digits) => {
   return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
 };
 
+export const getUniV3ActiveLiquidity = async () => {
+  const resp = await Axios.post("https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3", {
+    query: `{
+      pool(id: "0xcb0c5d9d92f4f2f80cce7aa271a1e148c226e19d") {
+        liquidity
+      }
+      }`
+  })
+
+  return Number(resp.data.data.pool.liquidity)
+}
+
+
 export interface Distro {
   from: string;
   until: string;

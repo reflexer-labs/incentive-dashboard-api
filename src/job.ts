@@ -5,6 +5,7 @@ import {
   DOCUMENT_KEY,
   DYNAMODB_TABLE,
   formatPercent,
+  getUniV3ActiveLiquidity,
   nFormatter,
 } from "./utils";
 import { BigNumber, ethers } from "ethers";
@@ -78,6 +79,10 @@ export const createDoc = async (): Promise<Document> => {
     data: "0xae9d70b0", // supplyRatePerBlock()
   };
 
+  // Uni V3 RAI/DAI
+  const uniV3Slot0Request = geb.contracts.uniswapV3PairCoinEth.slot0(true);
+  uniV3Slot0Request.to = "0xcB0C5d9D92f4F2F80cce7aa271a1E148c226e19D";
+
   // @ts-ignore
   const multicall = geb.multiCall([
     // uniswap
@@ -103,6 +108,9 @@ export const createDoc = async (): Promise<Document> => {
     geb.contracts.stakingToken.totalSupply(true), // 11
     flxEthLpTotalSupplyRequest, // 12
     geb.contracts.stakingFirstResort.stakedSupply(true), // 13
+
+    // Uni V3 RAI/DAI
+    uniV3Slot0Request, // 14
   ]) as any[];
 
   // == Execute all prmoises ==
@@ -193,7 +201,57 @@ export const createDoc = async (): Promise<Document> => {
   const lpSharesInStaking = bigNumberToNumber(multiCallData[13]) / 1e18;
   const lpShareTotal = bigNumberToNumber(multiCallData[12]) / 1e18;
   valuesMap.set("FLX_STAKING_POOL_SIZE", nFormatter((flxEthPoolSize * lpSharesInStaking) / lpShareTotal, 2));
-  
+
+  // Uniswap V3
+  const currentTick = multiCallData[14].tick;
+  const totalLiquidity = await getUniV3ActiveLiquidity();
+  const tickSpacing = 10;
+
+  // Tick ranges (1 tick = 0.01%)
+  // 1 tick wide around the current
+  const r1 = [
+    currentTick - (currentTick % tickSpacing),
+    currentTick - (currentTick % tickSpacing) + tickSpacing,
+  ];
+  // 3 tick wide around the current tick
+  const r2 = [r1[0] - tickSpacing, r1[1] + tickSpacing];
+  // 5 tick wide around the current tick
+  const r3 = [r1[0] - tickSpacing * 2, r1[1] + tickSpacing * 2];
+
+  const tickToPrice = (tick: number) => 1.0001 ** tick;
+  const tickRangeToAPR = (arr: number[]) => {
+    const liquidity = 1e18 / (1.0001 ** (arr[1] / 2) - 1.0001 ** (arr[0] / 2));
+    return (((liquidity / totalLiquidity) * 84 * 365 * flxPrice) / 2.5) * 100;
+  };
+
+  valuesMap.set(
+    "R1_UNISWAP_APR",
+    `${formatPercent(tickRangeToAPR(r1))}% (LP from ${nFormatter(tickToPrice(r1[0]), 3)} DAI to ${nFormatter(
+      tickToPrice(r1[1]),
+      3
+    )} DAI)`
+  );
+  valuesMap.set(
+    "R2_UNISWAP_APR",
+    `${formatPercent(tickRangeToAPR(r2))}% (LP from ${nFormatter(tickToPrice(r2[0]), 3)} DAI to ${nFormatter(
+      tickToPrice(r2[1]),
+      3
+    )} DAI)`
+  );
+  valuesMap.set(
+    "R3_UNISWAP_APR",
+    `${formatPercent(tickRangeToAPR(r3))}% (LP from ${nFormatter(tickToPrice(r3[0]), 3)} DAI to ${nFormatter(
+      tickToPrice(r3[1]),
+      3
+    )} DAI)`
+  );
+
+  valuesMap.set("UNISWAP_APR", formatPercent(tickRangeToAPR(r2)));
+  valuesMap.set(
+    "UNISWAP_APR_DESC",
+    `FLX APR only, ignores trading fees income. Assuming a Safe with 250% cRatio and a 0.3% wide price band.`
+  );
+
   setPropertyRecursive(rawDoc, valuesMap);
   // == Store in DynamoDB
   const params = {

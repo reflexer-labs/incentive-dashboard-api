@@ -43,6 +43,21 @@ rounds:
         optional:
           Pool size: ${{UNI_V2_FLX_ETH_POOL_SIZE}}
 
+      - from: 2021-08-18T12:50Z
+        until: Ongoing
+        amount: 84 FLX/day
+        name: Uniswap V3 RAI/DAI LP + Minter
+        image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
+        description: Mint RAI + LP in the 0.05% Uniswap v3 RAI/DAI Pool. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
+        link: https://app.uniswap.org/#/add/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/0x6B175474E89094C44Da98b954EedeAC495271d0F/500
+        apy: "{{UNISWAP_APR}}%"
+        apy_title: "APR"
+        apy_description: "{{UNISWAP_APR_DESC}}"
+        optional:
+          0.1% wide price band APR: "{{R1_UNISWAP_APR}}"
+          0.3% wide price band APR: "{{R2_UNISWAP_APR}}"
+          0.5% wide price band APR: "{{R3_UNISWAP_APR}}"
+
       - from: 2021-06-23T12:50Z
         until: Ongoing
         amount: 65 FLX/day
@@ -86,13 +101,6 @@ rounds:
         optional:
           Pool Size: "${{IDLE_POOL_SIZE}}"
 
-      - from: 2021-08-18T12:50Z
-        until: Ongoing
-        amount: 84 FLX/day
-        name: Uniswap V3 RAI/DAI LP + Minter
-        image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
-        description: Mint + LP in the 0.05% Uniswap v3 RAI/DAI Pool. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
-        link: https://app.uniswap.org/#/add/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/0x6B175474E89094C44Da98b954EedeAC495271d0F/500
 
   # Other rounds...
   # - number: 3
