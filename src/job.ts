@@ -125,7 +125,7 @@ export const createDoc = async (): Promise<Document> => {
   const raiInUniV2RaiEth = bigNumberToNumber(multiCallData[0]._reserve0) / 1e18;
   valuesMap.set(
     "UNI_V2_ETH_RAI_APR",
-    formatPercent(((290 * 365 * flxPrice) / (raiInUniV2RaiEth * (1 + 2.5) * raiPrice)) * 100)
+    formatPercent(((220 * 365 * flxPrice) / (raiInUniV2RaiEth * (1 + 2.5) * raiPrice)) * 100)
   );
 
   // Uniswap -- ETH/RAI pool size
@@ -148,7 +148,7 @@ export const createDoc = async (): Promise<Document> => {
   valuesMap.set("AAVE_RAI_POOL_SIZE", nFormatter(totalRaiBorrow * raiPrice, 2));
   valuesMap.set(
     "AAVE_FLX_APR",
-    formatPercent(((65 * 365 * flxPrice) / (totalRaiBorrow * raiPrice)) * 0.65 * 100)
+    formatPercent(((40 * 365 * flxPrice) / (totalRaiBorrow * raiPrice)) * 0.65 * 100)
   );
   valuesMap.set(
     "AAVE_RAI_SUPPLY_APY",
@@ -184,7 +184,7 @@ export const createDoc = async (): Promise<Document> => {
   valuesMap.set("FUSE_RAI_POOL_SIZE", nFormatter(totalRaiBorrow * raiPrice, 2));
   valuesMap.set(
     "FUSE_FLX_APR",
-    formatPercent(((15 * 365 * flxPrice) / (totalRaiBorrow * raiPrice)) * 0.65 * 100)
+    formatPercent(((10 * 365 * flxPrice) / (totalRaiBorrow * raiPrice)) * 0.65 * 100)
   );
 
   const blockRateToYearlyRate = (blockRate: BigNumber) =>
@@ -221,7 +221,7 @@ export const createDoc = async (): Promise<Document> => {
   const tickToPrice = (tick: number) => 1.0001 ** tick;
   const tickRangeToAPR = (arr: number[]) => {
     const liquidity = 1e18 / (1.0001 ** (arr[1] / 2) - 1.0001 ** (arr[0] / 2));
-    return (((liquidity / totalLiquidity) * 84 * 365 * flxPrice) / 2.5) * 100;
+    return (((liquidity / totalLiquidity) * 114 * 365 * flxPrice) / 2.5) * 100;
   };
 
   valuesMap.set(

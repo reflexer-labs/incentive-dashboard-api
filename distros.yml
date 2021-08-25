@@ -4,9 +4,9 @@ rounds:
     snapshotDate: TBD
     distributionDate: TBD
     distros:
-      - from: 2021-08-18T12:50Z
+      - from: 2021-08-25T12:50Z
         until: Ongoing
-        amount: 290 FLX/day
+        amount: 220 FLX/day
         name: Uniswap V2 RAI/ETH LP + Minter
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
         description: Mint + LP in the Uniswap v2 RAI/ETH Pool. More <a href="https://docs.reflexer.finance/incentives/rai-mint-+-lp-incentives-program" target="_blank">here</a>
@@ -43,9 +43,9 @@ rounds:
         optional:
           Pool size: ${{UNI_V2_FLX_ETH_POOL_SIZE}}
 
-      - from: 2021-08-18T12:50Z
+      - from: 2021-08-25T12:50Z
         until: Ongoing
-        amount: 84 FLX/day
+        amount: 114 FLX/day
         name: Uniswap V3 RAI/DAI LP + Minter
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
         description: Mint RAI + LP in the 0.05% Uniswap v3 RAI/DAI Pool. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
@@ -58,9 +58,9 @@ rounds:
           0.3% wide price band APR: "{{R2_UNISWAP_APR}}"
           0.5% wide price band APR: "{{R3_UNISWAP_APR}}"
 
-      - from: 2021-06-23T12:50Z
+      - from: 2021-08-25T12:50Z
         until: Ongoing
-        amount: 65 FLX/day
+        amount: 40 FLX/day
         name: Aave
         image: https://images.ctfassets.net/zql9qw49kkiw/6nP27R0M7Nl3LPaBMMNC08/954b4692406149d6277035c1088eda0d/aave-aave-logo.png
         description: RAI borrowers on Aave v2
@@ -73,9 +73,9 @@ rounds:
           RAI supply APY: "{{AAVE_RAI_SUPPLY_APY}}%"
           RAI borrow APY: "{{AAVE_RAI_BORROW_APY}}%"
 
-      - from: 2021-06-17T12:50Z
+      - from: 2021-08-25T12:50Z
         until: Ongoing
-        amount: 15 FLX/day
+        amount: 10 FLX/day
         name: Fuse
         image: https://images.ctfassets.net/zql9qw49kkiw/Nk896mcOyp2fSNse6rhbT/aaeda9b0e9c011f6a5d78f48edb1e931/finallogo-onblack-copy.png
         description: RAI borrowers in the Fuse pool 9 that are using USDC, DAI or FRAX as collateral.
