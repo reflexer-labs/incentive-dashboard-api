@@ -4,9 +4,9 @@ rounds:
     snapshotDate: TBD
     distributionDate: TBD
     distros:
-      - from: 2021-08-25T12:50Z
+      - from: 2021-09-01T12:50Z
         until: Ongoing
-        amount: 220 FLX/day
+        amount: 170 FLX/day
         name: Uniswap V2 RAI/ETH LP + Minter
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
         description: Mint + LP in the Uniswap v2 RAI/ETH Pool. More <a href="https://docs.reflexer.finance/incentives/rai-mint-+-lp-incentives-program" target="_blank">here</a>
@@ -17,9 +17,9 @@ rounds:
         optional:
           Pool size: ${{UNI_V2_ETH_RAI_POOL_SIZE}}
 
-      - from: 2021-08-18T12:50Z
+      - from: 2021-09-01T12:50Z
         until: Ongoing
-        amount: 50 FLX/day
+        amount: 90 FLX/day
         name: FLX/ETH Uniswap v2 stakers
         image: https://app.reflexer.finance/static/media/stFLX.f0676c46.svg
         description: Uniswap v2 FLX/ETH LP stakers. More <a href="https://docs.reflexer.finance/incentives/flx-staking" target="_blank">here</a>
@@ -30,9 +30,9 @@ rounds:
         optional:
           Pool size: ${{FLX_STAKING_POOL_SIZE}}
       
-      - from: 2021-06-21T12:50Z
+      - from: 2021-09-01T12:50Z
         until: Ongoing
-        amount: 90 FLX/day
+        amount: 50 FLX/day
         name: Uniswap V2 FLX/ETH
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
         description: Uniswap v2 FLX/ETH LP. More <a href="https://docs.reflexer.finance/incentives/flx-liquidity-incentives" target="_blank">here</a>
@@ -43,9 +43,9 @@ rounds:
         optional:
           Pool size: ${{UNI_V2_FLX_ETH_POOL_SIZE}}
 
-      - from: 2021-08-25T12:50Z
+      - from: 2021-09-01T12:50Z
         until: Ongoing
-        amount: 114 FLX/day
+        amount: 144 FLX/day
         name: Uniswap V3 RAI/DAI LP + Minter
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
         description: Mint RAI + LP in the 0.05% Uniswap v3 RAI/DAI Pool. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
