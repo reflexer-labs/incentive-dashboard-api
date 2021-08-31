@@ -100,7 +100,34 @@ rounds:
         apy_description: "{{IDLE_APR}}"
         optional:
           Pool Size: "${{IDLE_POOL_SIZE}}"
-
+uniV3PoolConfig:
+    - pair: "RAI/DAI"
+      ranges:
+        wide:
+          upperTick: 11040
+          lowerTick: 10980
+          apr: "{{R2_UNISWAP_APR_NO_DETAIL}}"
+        tight:
+          upperTick: 11020
+          lowerTick: 11000
+          apr: "{{R3_UNISWAP_APR_NO_DETAIL}}"
+      token0: "0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919"
+      token1: "0x6B175474E89094C44Da98b954EedeAC495271d0F"
+      fee: 500
+    - pair: "RAI/ETH"
+      ranges:
+        wide:
+          upperTick: -69160
+          lowerTick: -69640
+          apr: "{{R2_UNISWAP_APR_NO_DETAIL}}"
+        tight:
+          upperTick: -68680
+          lowerTick: -70120
+          apr: "{{R3_UNISWAP_APR_NO_DETAIL}}"
+      token0: "0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919"
+      token1: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+      fee: 3000
+  
 
   # Other rounds...
   # - number: 3

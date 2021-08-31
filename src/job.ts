@@ -245,6 +245,9 @@ export const createDoc = async (): Promise<Document> => {
       3
     )} DAI)`
   );
+  
+  valuesMap.set("R2_UNISWAP_APR_NO_DETAIL", formatPercent(tickRangeToAPR(r2)));
+  valuesMap.set("R3_UNISWAP_APR_NO_DETAIL", formatPercent(tickRangeToAPR(r3)));
 
   valuesMap.set("UNISWAP_APR", formatPercent(tickRangeToAPR(r2)));
   valuesMap.set(
