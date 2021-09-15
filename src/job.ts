@@ -131,17 +131,6 @@ export const createDoc = async (): Promise<Document> => {
   // Uniswap -- ETH/RAI pool size
   valuesMap.set("UNI_V2_ETH_RAI_POOL_SIZE", nFormatter(raiInUniV2RaiEth * 2 * raiPrice, 2));
 
-  // Uniswap FLX/ETH pool APR
-  const flxInUniV2FlxEth = bigNumberToNumber(multiCallData[1]._reserve0) / 1e18;
-  valuesMap.set(
-    "UNI_V2_FLX_ETH_APR",
-    formatPercent(((50 * 365 * flxPrice) / (flxInUniV2FlxEth * 2 * flxPrice)) * 100)
-  );
-
-  // Uniswap -- FLX/ETH pool size
-  const flxEthPoolSize = flxInUniV2FlxEth * 2 * flxPrice;
-  valuesMap.set("UNI_V2_FLX_ETH_POOL_SIZE", nFormatter(flxEthPoolSize, 2));
-
   // Aave
   const aaveRaiReserveData = multiCallData[3] as any;
   let totalRaiBorrow = bigNumberToNumber(multiCallData[2]) / 1e18;
@@ -193,6 +182,7 @@ export const createDoc = async (): Promise<Document> => {
   valuesMap.set("FUSE_RAI_BORROW_APY", blockRateToYearlyRate(multiCallData[8]));
 
   // FLX stakers APR
+  const flxInUniV2FlxEth = bigNumberToNumber(multiCallData[1]._reserve0) / 1e18;
   const annualRewards = (bigNumberToNumber(multiCallData[10]) / 1e18) * 365 * 3600 * 24;
   const stakingSharesTotalSUpply = bigNumberToNumber(multiCallData[11]) / 1e18;
   const stakingAPR = ((annualRewards / BLOCK_INTERVAL) * stakingSharesTotalSUpply) / (flxInUniV2FlxEth * 2);
@@ -200,6 +190,7 @@ export const createDoc = async (): Promise<Document> => {
 
   const lpSharesInStaking = bigNumberToNumber(multiCallData[13]) / 1e18;
   const lpShareTotal = bigNumberToNumber(multiCallData[12]) / 1e18;
+  const flxEthPoolSize = flxInUniV2FlxEth * 2 * flxPrice;
   valuesMap.set("FLX_STAKING_POOL_SIZE", nFormatter((flxEthPoolSize * lpSharesInStaking) / lpShareTotal, 2));
 
   // Uniswap V3
@@ -245,7 +236,7 @@ export const createDoc = async (): Promise<Document> => {
       3
     )} DAI)`
   );
-  
+
   valuesMap.set("R2_UNISWAP_APR_NO_DETAIL", formatPercent(tickRangeToAPR(r2)));
   valuesMap.set("R3_UNISWAP_APR_NO_DETAIL", formatPercent(tickRangeToAPR(r3)));
 
