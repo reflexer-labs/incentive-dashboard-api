@@ -30,7 +30,7 @@ rounds:
         optional:
           Pool size: ${{FLX_STAKING_POOL_SIZE}}
       
-      - from: 2021-09-08T12:50Z
+      - from: 2021-10-06T12:50Z
         until: Ongoing
         amount: 174 FLX/day
         name: Uniswap V3 RAI/DAI LP + Minter
@@ -41,9 +41,9 @@ rounds:
         apy_title: "APR"
         apy_description: "{{UNISWAP_APR_DESC}}"
         optional:
-          0.1% wide price band APR: "{{R1_UNISWAP_APR}}"
-          0.3% wide price band APR: "{{R2_UNISWAP_APR}}"
-          0.5% wide price band APR: "{{R3_UNISWAP_APR}}"
+          Current state: "RAI redemption price: {{UNISWAP_V3_RAI_REDEMPTION_PRICE}} RAI market price:  {{UNISWAP_V3_RAI_MARKET_PRICE}}"
+          Optimal range APR: "{{UNISWAP_V3_OPTIMAL}}"
+          Recommended range APR: "{{UNISWAP_V3_RECOMMENDED}}"
 
       - from: 2021-08-25T12:50Z
         until: Ongoing

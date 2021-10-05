@@ -6,6 +6,7 @@ import {
   DYNAMODB_TABLE,
   formatPercent,
   getUniV3ActiveLiquidity,
+  getUniV3Positions,
   nFormatter,
 } from "./utils";
 import { BigNumber, ethers } from "ethers";
@@ -113,6 +114,9 @@ export const createDoc = async (): Promise<Document> => {
     uniV3Slot0Request, // 14
   ]) as any[];
 
+  const redemptionPrice =
+    bigNumberToNumber(await geb.contracts.oracleRelayer.redemptionPrice_readOnly()) / 1e27;
+
   // == Execute all prmoises ==
   const [[raiPrice, flxPrice], multiCallData] = await Promise.all([
     coinGeckoPrice(["rai", "reflexer-ungovernance-token"]),
@@ -194,56 +198,71 @@ export const createDoc = async (): Promise<Document> => {
   valuesMap.set("FLX_STAKING_POOL_SIZE", nFormatter((flxEthPoolSize * lpSharesInStaking) / lpShareTotal, 2));
 
   // Uniswap V3
-  const currentTick = multiCallData[14].tick;
-  const totalLiquidity = await getUniV3ActiveLiquidity();
   const tickSpacing = 10;
-
-  // Tick ranges (1 tick = 0.01%)
-  // 1 tick wide around the current
-  const r1 = [
-    currentTick - (currentTick % tickSpacing),
-    currentTick - (currentTick % tickSpacing) + tickSpacing,
-  ];
-  // 3 tick wide around the current tick
-  const r2 = [r1[0] - tickSpacing, r1[1] + tickSpacing];
-  // 5 tick wide around the current tick
-  const r3 = [r1[0] - tickSpacing * 2, r1[1] + tickSpacing * 2];
-
   const tickToPrice = (tick: number) => 1.0001 ** tick;
+  const roundPrice = (price: number) => (Math.round(price * 10000) / 10000).toString();
+  const priceToTick = (price: number) => Math.log(price) / Math.log(1.0001);
+  const flooredTick = (tick: number, tickSpacing: number) =>
+    Math.floor(tick) - (Math.floor(tick) % tickSpacing);
+
+  const marketPriceTick = multiCallData[14].tick;
+  const redemptionPriceTick = priceToTick(redemptionPrice);
+
+  const optimalLowerTick = flooredTick(Math.min(marketPriceTick, redemptionPriceTick), tickSpacing);
+  const optimalUpperTick =
+    flooredTick(Math.max(marketPriceTick, redemptionPriceTick), tickSpacing) + tickSpacing;
+
+  const isLowerTickFromMarketPrice = flooredTick(marketPriceTick, tickSpacing) === optimalLowerTick;
+  const recommendedLowerTick = isLowerTickFromMarketPrice ? optimalLowerTick - tickSpacing : optimalLowerTick;
+  const recommendedUpperTick = isLowerTickFromMarketPrice ? optimalUpperTick : optimalUpperTick + tickSpacing;
+
+  const allUniV3Position = await getUniV3Positions();
+  const totalLiquidity = allUniV3Position
+    // Filter positions that are in rnage
+    .filter(
+      (p) =>
+        Number(p.tickLower.tickIdx) <= optimalLowerTick && Number(p.tickUpper.tickIdx) >= optimalUpperTick
+    )
+    // Sum all liquidity
+    .reduce((acc, p) => acc + Number(p.liquidity), 0);
+
+  console.log(optimalLowerTick, optimalUpperTick);
   const tickRangeToAPR = (arr: number[]) => {
     const liquidity = 1e18 / (1.0001 ** (arr[1] / 2) - 1.0001 ** (arr[0] / 2));
     return (((liquidity / totalLiquidity) * 174 * 365 * flxPrice) / 2.5) * 100;
   };
 
   valuesMap.set(
-    "R1_UNISWAP_APR",
-    `${formatPercent(tickRangeToAPR(r1))}% (LP from ${nFormatter(tickToPrice(r1[0]), 3)} DAI to ${nFormatter(
-      tickToPrice(r1[1]),
-      3
-    )} DAI)`
-  );
-  valuesMap.set(
-    "R2_UNISWAP_APR",
-    `${formatPercent(tickRangeToAPR(r2))}% (LP from ${nFormatter(tickToPrice(r2[0]), 3)} DAI to ${nFormatter(
-      tickToPrice(r2[1]),
-      3
-    )} DAI)`
-  );
-  valuesMap.set(
-    "R3_UNISWAP_APR",
-    `${formatPercent(tickRangeToAPR(r3))}% (LP from ${nFormatter(tickToPrice(r3[0]), 3)} DAI to ${nFormatter(
-      tickToPrice(r3[1]),
-      3
-    )} DAI)`
+    "UNISWAP_V3_OPTIMAL",
+    `${formatPercent(tickRangeToAPR([optimalLowerTick, optimalUpperTick]))}% (LP from ${roundPrice(
+      tickToPrice(optimalLowerTick)
+    )} DAI to ${roundPrice(tickToPrice(optimalUpperTick))} DAI)`
   );
 
-  valuesMap.set("R2_UNISWAP_APR_NO_DETAIL", formatPercent(tickRangeToAPR(r2)));
-  valuesMap.set("R3_UNISWAP_APR_NO_DETAIL", formatPercent(tickRangeToAPR(r3)));
+  valuesMap.set(
+    "UNISWAP_V3_RECOMMENDED",
+    `${formatPercent(tickRangeToAPR([recommendedLowerTick, recommendedUpperTick]))}% (LP from ${roundPrice(
+      tickToPrice(recommendedLowerTick)
+    )} DAI to ${roundPrice(tickToPrice(recommendedUpperTick))} DAI)`
+  );
 
-  valuesMap.set("UNISWAP_APR", formatPercent(tickRangeToAPR(r2)));
+  valuesMap.set("UNISWAP_APR", formatPercent(tickRangeToAPR([optimalLowerTick, optimalUpperTick])));
+
   valuesMap.set(
     "UNISWAP_APR_DESC",
-    `FLX APR only, ignores trading fees income. Assuming a Safe with 250% cRatio and a 0.3% wide price band.`
+    `FLX APR only, ignores trading fees income. Assuming a Safe with 250% cRatio and the optimal range descibed below.`
+  );
+
+  valuesMap.set("UNISWAP_V3_RAI_REDEMPTION_PRICE", roundPrice(redemptionPrice));
+  valuesMap.set("UNISWAP_V3_RAI_MARKET_PRICE", roundPrice(tickToPrice(marketPriceTick)));
+
+  valuesMap.set(
+    "R2_UNISWAP_APR_NO_DETAIL",
+    formatPercent(tickRangeToAPR([optimalLowerTick, optimalUpperTick]))
+  );
+  valuesMap.set(
+    "R3_UNISWAP_APR_NO_DETAIL",
+    formatPercent(tickRangeToAPR([recommendedLowerTick, recommendedUpperTick]))
   );
 
   setPropertyRecursive(rawDoc, valuesMap);

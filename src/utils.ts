@@ -41,12 +41,31 @@ export const getUniV3ActiveLiquidity = async () => {
       pool(id: "0xcb0c5d9d92f4f2f80cce7aa271a1e148c226e19d") {
         liquidity
       }
-      }`
-  })
+      }`,
+  });
 
-  return Number(resp.data.data.pool.liquidity)
-}
+  return Number(resp.data.data.pool.liquidity);
+};
 
+export const getUniV3Positions = async (): Promise<
+  { liquidity: string; tickLower: { tickIdx: string }; tickUpper: { tickIdx: string } }[]
+> => {
+  const resp = await Axios.post("https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3", {
+    query: `{
+      positions(where: {pool: "0xcb0c5d9d92f4f2f80cce7aa271a1e148c226e19d", liquidity_gt: 0}, orderBy: liquidity, orderDirection: desc, first: 1000) {
+        liquidity
+        tickLower {
+          tickIdx
+        }
+        tickUpper {
+      tickIdx
+        }
+      }
+    }`,
+  });
+
+  return resp.data.data.positions;
+};
 
 export interface Distro {
   from: string;
