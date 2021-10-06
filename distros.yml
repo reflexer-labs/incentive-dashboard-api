@@ -33,9 +33,9 @@ rounds:
       - from: 2021-10-06T12:50Z
         until: Ongoing
         amount: 174 FLX/day
-        name: Uniswap V3 RAI/DAI LP + Minter
+        name: Uniswap V3 RAI/DAI LP + Minter.
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
-        description: Mint RAI + LP in the 0.05% Uniswap v3 RAI/DAI Pool. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
+        description: Mint RAI and LP in the 0.05% Uniswap v3 RAI/DAI Pool at redemption price and market price. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
         link: https://app.uniswap.org/#/add/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/0x6B175474E89094C44Da98b954EedeAC495271d0F/500
         apy: "{{UNISWAP_APR}}%"
         apy_title: "APR"

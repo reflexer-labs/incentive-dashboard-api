@@ -250,7 +250,7 @@ export const createDoc = async (): Promise<Document> => {
 
   valuesMap.set(
     "UNISWAP_APR_DESC",
-    `FLX APR only, ignores trading fees income. Assuming a Safe with 250% cRatio and the optimal range descibed below.`
+    `FLX APR only, ignores trading fees income. Assuming a Safe with 250% cRatio and the optimal range indicated below. The Optimal range is the smallest possible range to include both, market price and redemption price. The recommened range just adds 1 tick on the side of the market price to accounts for its higher volatility.`
   );
 
   valuesMap.set("UNISWAP_V3_RAI_REDEMPTION_PRICE", roundPrice(redemptionPrice));
