@@ -213,7 +213,7 @@ export const createDoc = async (): Promise<Document> => {
     flooredTick(Math.max(marketPriceTick, redemptionPriceTick), tickSpacing) + tickSpacing;
 
   const isLowerTickFromMarketPrice = flooredTick(marketPriceTick, tickSpacing) === optimalLowerTick;
-  const recommendedLowerTick = isLowerTickFromMarketPrice ? optimalLowerTick - tickSpacing : optimalLowerTick;
+  const recommendedLowerTick = isLowerTickFromMarketPrice ? optimalLowerTick - tickSpacing : optimalLowerTick - tickSpacing;
   const recommendedUpperTick = isLowerTickFromMarketPrice ? optimalUpperTick : optimalUpperTick + tickSpacing;
 
   const allUniV3Position = await getUniV3Positions();
