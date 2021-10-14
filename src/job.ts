@@ -226,7 +226,6 @@ export const createDoc = async (): Promise<Document> => {
     // Sum all liquidity
     .reduce((acc, p) => acc + Number(p.liquidity), 0);
 
-  console.log(optimalLowerTick, optimalUpperTick);
   const tickRangeToAPR = (arr: number[]) => {
     const liquidity = 1e18 / (1.0001 ** (arr[1] / 2) - 1.0001 ** (arr[0] / 2));
     return (((liquidity / totalLiquidity) * 174 * 365 * flxPrice) / 2.5) * 100;
