@@ -17,9 +17,9 @@ rounds:
         optional:
           Pool size: ${{UNI_V2_ETH_RAI_POOL_SIZE}}
 
-      - from: 2021-09-15T12:50Z
+      - from: 2021-10-13T12:50Z
         until: Ongoing
-        amount: 120 FLX/day
+        amount: 100 FLX/day
         name: FLX/ETH Uniswap v2 stakers
         image: https://app.reflexer.finance/static/media/stFLX.f0676c46.svg
         description: Uniswap v2 FLX/ETH LP stakers. More <a href="https://docs.reflexer.finance/incentives/flx-staking" target="_blank">here</a>
@@ -45,9 +45,9 @@ rounds:
           Optimal range APR: "{{UNISWAP_V3_OPTIMAL}}"
           Recommended range APR: "{{UNISWAP_V3_RECOMMENDED}}"
 
-      - from: 2021-08-25T12:50Z
+      - from: 2021-10-13T12:50Z
         until: Ongoing
-        amount: 40 FLX/day
+        amount: 30 FLX/day
         name: Aave
         image: https://images.ctfassets.net/zql9qw49kkiw/6nP27R0M7Nl3LPaBMMNC08/954b4692406149d6277035c1088eda0d/aave-aave-logo.png
         description: RAI borrowers on Aave v2
