@@ -12,7 +12,7 @@ rounds:
         description: Mint + LP in the Uniswap v2 RAI/ETH Pool. More <a href="https://docs.reflexer.finance/incentives/rai-mint-+-lp-incentives-program" target="_blank">here</a>
         link: https://app.uniswap.org/#/add/v2/0x03ab458634910aad20ef5f1c8ee96f1d6ac54919/ETH
         apy: "{{UNI_V2_ETH_RAI_APR}}%"
-        apy_title: "APR"
+        apy_title: "FLX APR"
         apy_description: "Assuming 250% safe cRatio, not including Uniswap fees revenue"
         optional:
           Pool size: ${{UNI_V2_ETH_RAI_POOL_SIZE}}
@@ -25,7 +25,7 @@ rounds:
         description: Uniswap v2 FLX/ETH LP stakers. More <a href="https://docs.reflexer.finance/incentives/flx-staking" target="_blank">here</a>
         link: https://app.reflexer.finance/#/earn/staking
         apy: "{{FLX_STAKING_APR}}%"
-        apy_title: "APR"
+        apy_title: "FLX APR"
         apy_description: "FLX APR only, does not include fee revenue and potential impermanent loss."
         optional:
           Pool size: ${{FLX_STAKING_POOL_SIZE}}
@@ -38,7 +38,7 @@ rounds:
         description: Mint RAI and LP in the 0.05% Uniswap v3 RAI/DAI Pool at redemption price and market price. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
         link: https://app.uniswap.org/#/add/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/0x6B175474E89094C44Da98b954EedeAC495271d0F/500
         apy: "{{UNISWAP_APR}}%"
-        apy_title: "APR"
+        apy_title: "FLX APR"
         apy_description: "{{UNISWAP_APR_DESC}}"
         optional:
           Current state: "RAI redemption price: {{UNISWAP_V3_RAI_REDEMPTION_PRICE}} RAI market price:  {{UNISWAP_V3_RAI_MARKET_PRICE}}"
@@ -53,7 +53,7 @@ rounds:
         description: RAI borrowers on Aave v2
         link: https://app.aave.com/reserve-overview/RAI-0x03ab458634910aad20ef5f1c8ee96f1d6ac549190xb53c1a33016b2dc2ff3653530bff1848a515c8c5
         apy: "{{AAVE_FLX_APR}}%"
-        apy_title: "APR"
+        apy_title: "FLX APR"
         apy_description: "Assuming 65% LTV, not including borrow APY"
         optional:
           Total RAI borrows: "${{AAVE_RAI_POOL_SIZE}}"
@@ -68,7 +68,7 @@ rounds:
         description: RAI borrowers in the Fuse pool 9 that are using USDC, DAI or FRAX as collateral.
         link: https://app.rari.capital/fuse/pool/9
         apy: "{{FUSE_FLX_APR}}%"
-        apy_title: "APR"
+        apy_title: "FLX APR"
         apy_description: "Assuming 65% LTV, not including borrow APY"
         optional:
           Total RAI borrows: "${{FUSE_RAI_POOL_SIZE}}"
@@ -87,6 +87,40 @@ rounds:
         apy_description: "{{IDLE_APR}}"
         optional:
           Pool Size: "${{IDLE_POOL_SIZE}}"
+
+      - from: 2021-08-19T12:50Z
+        until: Ongoing
+        amount: 10 stkAAVE/day
+        name: stkAAVE Rewards
+        image: https://images.ctfassets.net/zql9qw49kkiw/2IW7cwomVasBu6Y6CFlIXY/70f9f1d30d0203746183d47348995f69/stkaave.svg
+        description: RAI lender and borrowers on Aave according to the <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">Aave liquidity mining program</a>.
+        link: https://app.aave.com/#/markets
+
+      - from: 2021-08-19T12:50Z
+        until: Ongoing
+        amount: 21 PNG/day
+        name: Pangolin
+        image: "https://images.ctfassets.net/zql9qw49kkiw/3xEx76YYUGuakXvVHWMEWb/ba2e151edd9111a3f3cf533c424b0d89/logo__1_.png"
+        description: RAI-AVAX LPs on Pangolin (Avalanche chain). More info <a href="https://pangolindex.medium.com/pangolin-and-reflexer-form-a-partnership-to-bring-non-pegged-stablecoins-to-avalanche-aac0f2839674" target="_blank">here</a>.
+        link: https://app.pangolin.exchange/#/png/AVAX/0x97Cd1CFE2ed5712660bb6c14053C0EcB031Bff7d/1
+      
+      - from: 2021-08-19T12:50Z
+        until: Ongoing
+        amount: 528k POLLY/day
+        name: Polly Finance 
+        image: "https://images.ctfassets.net/zql9qw49kkiw/66lq8ZZ0EysBYRLB2wR0V3/4dbe7bd3301a1f8b5d1a56c55811e6f2/logo.ea3bdc41.svg"
+        description: POLLY-RAI Sushiswap Polygon LPs on Polly Finance. More info <a href="https://docs.bao.finance/franchises/polly/contracts-and-key-info#tokens" target="_blank">here</a>.
+        link: https://pollyfinance.com/farms?ref=null
+      
+      - from: 2021-08-19T12:50Z
+        until: Ongoing
+        amount:  Variable MPH rewards 
+        name: 88mph 
+        image: "https://images.ctfassets.net/zql9qw49kkiw/1jFpRuZGHZ1lrQnVOwPzaU/452c0d22d1673e2a89c6711d629eca09/88-logo.jpg"
+        description: RAI depositors on 88mph fix yield lending.
+        link: https://88mph.app/earn
+
+        
 uniV3PoolConfig:
     - pair: "RAI/DAI"
       ranges:
