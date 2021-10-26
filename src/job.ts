@@ -213,7 +213,9 @@ export const createDoc = async (): Promise<Document> => {
     flooredTick(Math.max(marketPriceTick, redemptionPriceTick), tickSpacing) + tickSpacing;
 
   const isLowerTickFromMarketPrice = flooredTick(marketPriceTick, tickSpacing) === optimalLowerTick;
-  const recommendedLowerTick = isLowerTickFromMarketPrice ? optimalLowerTick - tickSpacing : optimalLowerTick - tickSpacing;
+  const recommendedLowerTick = isLowerTickFromMarketPrice
+    ? optimalLowerTick - tickSpacing
+    : optimalLowerTick - tickSpacing;
   const recommendedUpperTick = isLowerTickFromMarketPrice ? optimalUpperTick : optimalUpperTick + tickSpacing;
 
   const allUniV3Position = await getUniV3Positions();
@@ -245,11 +247,11 @@ export const createDoc = async (): Promise<Document> => {
     )} DAI to ${roundPrice(tickToPrice(recommendedUpperTick))} DAI)`
   );
 
-  valuesMap.set("UNISWAP_APR", formatPercent(tickRangeToAPR([optimalLowerTick, optimalUpperTick])));
+  valuesMap.set("UNISWAP_APR", formatPercent(tickRangeToAPR([recommendedLowerTick, recommendedUpperTick])));
 
   valuesMap.set(
     "UNISWAP_APR_DESC",
-    `FLX APR only, ignores trading fees income. Assuming a Safe with 250% cRatio and the optimal range indicated below. The Optimal range is the smallest possible range to include both, market price and redemption price. The recommened range just adds 1 tick on the side of the market price to accounts for its higher volatility.`
+    `FLX APR only, ignores trading fees income. Assuming a Safe with 250% cRatio and the recommended range indicated below. The recommened range includes both prices (market and redemption) and just adds 1 tick on the side of the market price to accounts for its higher volatility.`
   );
 
   valuesMap.set("UNISWAP_V3_RAI_REDEMPTION_PRICE", roundPrice(redemptionPrice));

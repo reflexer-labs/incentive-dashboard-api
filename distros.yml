@@ -109,7 +109,7 @@ rounds:
         amount: 528k POLLY/day
         name: Polly Finance 
         image: "https://images.ctfassets.net/zql9qw49kkiw/66lq8ZZ0EysBYRLB2wR0V3/4dbe7bd3301a1f8b5d1a56c55811e6f2/logo.ea3bdc41.svg"
-        description: POLLY-RAI Sushiswap Polygon LPs on Polly Finance. More info <a href="https://docs.bao.finance/franchises/polly/contracts-and-key-info#tokens" target="_blank">here</a>.
+        description: RAI farms on Polly Finance. More info <a href="https://docs.bao.finance/franchises/polly/contracts-and-key-info#tokens" target="_blank">here</a>.
         link: https://pollyfinance.com/farms?ref=null
       
       - from: 2021-08-19T12:50Z
