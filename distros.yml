@@ -1,8 +1,8 @@
 rounds:
   - number: 5
-    name: Round 5
-    snapshotDate: TBD
-    distributionDate: TBD
+    # name: Round namme
+    snapshotDate: 2021-11-15T12:50Z
+    distributionDate: 2021-11-17T12:50Z
     distros:
       - from: 2021-09-08T12:50Z
         until: Ongoing
@@ -45,9 +45,9 @@ rounds:
           Optimal range APR: "{{UNISWAP_V3_OPTIMAL}}"
           Recommended range APR: "{{UNISWAP_V3_RECOMMENDED}}"
 
-      - from: 2021-10-13T12:50Z
+      - from: 2021-10-27T12:50Z
         until: Ongoing
-        amount: 30 FLX/day
+        amount: 20 FLX/day
         name: Aave
         image: https://images.ctfassets.net/zql9qw49kkiw/6nP27R0M7Nl3LPaBMMNC08/954b4692406149d6277035c1088eda0d/aave-aave-logo.png
         description: RAI borrowers on Aave v2
