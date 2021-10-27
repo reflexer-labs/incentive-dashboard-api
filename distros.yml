@@ -1,12 +1,12 @@
 rounds:
   - number: 5
-    # name: Round namme
+    name: Current RAI Incentives
     snapshotDate: 2021-11-15T12:50Z
     distributionDate: 2021-11-17T12:50Z
     distros:
-      - from: 2021-09-08T12:50Z
+      - from: 2021-10-27T12:50Z
         until: Ongoing
-        amount: 100 FLX/day
+        amount: 90 FLX/day
         name: Uniswap V2 RAI/ETH LP + Minter
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
         description: Mint + LP in the Uniswap v2 RAI/ETH Pool. More <a href="https://docs.reflexer.finance/incentives/rai-mint-+-lp-incentives-program" target="_blank">here</a>
