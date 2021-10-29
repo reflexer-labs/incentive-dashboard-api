@@ -212,11 +212,9 @@ export const createDoc = async (): Promise<Document> => {
   const optimalUpperTick =
     flooredTick(Math.max(marketPriceTick, redemptionPriceTick), tickSpacing) + tickSpacing;
 
-  const isLowerTickFromMarketPrice = flooredTick(marketPriceTick, tickSpacing) === optimalLowerTick;
-  const recommendedLowerTick = isLowerTickFromMarketPrice
-    ? optimalLowerTick - tickSpacing
-    : optimalLowerTick - tickSpacing;
-  const recommendedUpperTick = isLowerTickFromMarketPrice ? optimalUpperTick : optimalUpperTick + tickSpacing;
+  const recommendedLowerTick = optimalLowerTick - tickSpacing;
+
+  const recommendedUpperTick = optimalUpperTick + tickSpacing;
 
   const allUniV3Position = await getUniV3Positions();
   const totalLiquidity = allUniV3Position
@@ -251,7 +249,7 @@ export const createDoc = async (): Promise<Document> => {
 
   valuesMap.set(
     "UNISWAP_APR_DESC",
-    `FLX APR only, ignores trading fees income. Assuming a Safe with 250% cRatio and the recommended range indicated below. The recommened range includes both prices (market and redemption) and just adds 1 tick on the side of the market price to accounts for its higher volatility.`
+    `FLX APR only, ignores trading fees income. Assuming a Safe with 250% cRatio and the recommended range indicated below. The optimal range is the smallest possible range to include both, the redemption price and the market price. The recommended range adds one tick on each side.`
   );
 
   valuesMap.set("UNISWAP_V3_RAI_REDEMPTION_PRICE", roundPrice(redemptionPrice));
