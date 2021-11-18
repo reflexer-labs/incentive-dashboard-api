@@ -200,7 +200,8 @@ export const createDoc = async (): Promise<Document> => {
   // Uniswap V3
   const tickSpacing = 10;
   const tickToPrice = (tick: number) => 1.0001 ** tick;
-  const roundPrice = (price: number) => (Math.round(price * 10000) / 10000).toString();
+  const roundPrice = (price: number, dec = 4) =>
+    (Math.round(price * 10 ** dec) / 10 ** dec).toString();
   const priceToTick = (price: number) => Math.log(price) / Math.log(1.0001);
   const flooredTick = (tick: number, tickSpacing: number) =>
     Math.floor(tick) - (Math.floor(tick) % tickSpacing);
@@ -228,7 +229,7 @@ export const createDoc = async (): Promise<Document> => {
 
   const tickRangeToAPR = (arr: number[]) => {
     const liquidity = 1e18 / (1.0001 ** (arr[1] / 2) - 1.0001 ** (arr[0] / 2));
-    return (((liquidity / totalLiquidity) * 174 * 365 * flxPrice) / 2.5) * 100;
+    return (((liquidity / totalLiquidity) * 150 * 365 * flxPrice) / 2.5) * 100;
   };
 
   valuesMap.set(
@@ -252,8 +253,8 @@ export const createDoc = async (): Promise<Document> => {
     `FLX APR only, ignores trading fees income. Assuming a Safe with 250% cRatio and the recommended range indicated below. The optimal range is the smallest possible range to include both, the redemption price and the market price. The recommended range adds one tick on each side.`
   );
 
-  valuesMap.set("UNISWAP_V3_RAI_REDEMPTION_PRICE", roundPrice(redemptionPrice));
-  valuesMap.set("UNISWAP_V3_RAI_MARKET_PRICE", roundPrice(tickToPrice(marketPriceTick)));
+  valuesMap.set("UNISWAP_V3_RAI_REDEMPTION_PRICE", roundPrice(redemptionPrice,6));
+  valuesMap.set("UNISWAP_V3_RAI_MARKET_PRICE", roundPrice(tickToPrice(marketPriceTick), 6));
 
   valuesMap.set(
     "R2_UNISWAP_APR_NO_DETAIL",
