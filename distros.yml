@@ -2,7 +2,7 @@ rounds:
   - number: 5
     name: Current RAI Incentives
     snapshotDate: 2021-11-15T12:50Z
-    distributionDate: 2021-11-17T12:50Z
+    # distributionDate: 2021-11-17T12:50Z
     distros:
       - from: 2021-11-03T12:50Z
         until: Ongoing
@@ -96,17 +96,17 @@ rounds:
         description: RAI lender and borrowers on Aave according to the <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">Aave liquidity mining program</a>.
         link: https://app.aave.com/#/markets
 
-      - from: 2021-08-19T12:50Z
-        until: Ongoing
-        amount: 21 PNG/day
-        name: Pangolin
-        image: "https://images.ctfassets.net/zql9qw49kkiw/3xEx76YYUGuakXvVHWMEWb/ba2e151edd9111a3f3cf533c424b0d89/logo__1_.png"
-        description: RAI-AVAX LPs on Pangolin (Avalanche chain). More info <a href="https://pangolindex.medium.com/pangolin-and-reflexer-form-a-partnership-to-bring-non-pegged-stablecoins-to-avalanche-aac0f2839674" target="_blank">here</a>.
-        link: https://app.pangolin.exchange/#/png/AVAX/0x97Cd1CFE2ed5712660bb6c14053C0EcB031Bff7d/1
+      # - from: 2021-08-19T12:50Z
+      #   until: Ongoing
+      #   amount: 21 PNG/day
+      #   name: Pangolin
+      #   image: "https://images.ctfassets.net/zql9qw49kkiw/3xEx76YYUGuakXvVHWMEWb/ba2e151edd9111a3f3cf533c424b0d89/logo__1_.png"
+      #   description: RAI-AVAX LPs on Pangolin (Avalanche chain). More info <a href="https://pangolindex.medium.com/pangolin-and-reflexer-form-a-partnership-to-bring-non-pegged-stablecoins-to-avalanche-aac0f2839674" target="_blank">here</a>.
+      #   link: https://app.pangolin.exchange/#/png/AVAX/0x97Cd1CFE2ed5712660bb6c14053C0EcB031Bff7d/1
       
       - from: 2021-08-19T12:50Z
         until: Ongoing
-        amount: 528k POLLY/day
+        amount: variable POLLY rewards
         name: Polly Finance 
         image: "https://images.ctfassets.net/zql9qw49kkiw/66lq8ZZ0EysBYRLB2wR0V3/4dbe7bd3301a1f8b5d1a56c55811e6f2/logo.ea3bdc41.svg"
         description: RAI farms on Polly Finance. More info <a href="https://docs.bao.finance/franchises/polly/contracts-and-key-info#tokens" target="_blank">here</a>.
