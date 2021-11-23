@@ -4,7 +4,7 @@ rounds:
     snapshotDate: 2021-11-15T12:50Z
     # distributionDate: 2021-11-17T12:50Z
     distros:
-      - from: 2021-11-03T12:50Z
+      - from: 2021-11-15T12:50Z
         until: Ongoing
         amount: 80 FLX/day
         name: Uniswap V2 RAI/ETH LP + Minter
