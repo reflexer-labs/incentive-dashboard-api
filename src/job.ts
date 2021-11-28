@@ -235,15 +235,17 @@ export const createDoc = async (): Promise<Document> => {
   valuesMap.set(
     "UNISWAP_V3_OPTIMAL",
     `${formatPercent(tickRangeToAPR([optimalLowerTick, optimalUpperTick]))}% (LP from ${roundPrice(
-      tickToPrice(optimalLowerTick)
-    )} DAI to ${roundPrice(tickToPrice(optimalUpperTick))} DAI)`
+      tickToPrice(optimalLowerTick), 
+      7
+    )} DAI to ${roundPrice(tickToPrice(optimalUpperTick), 7)} DAI)`
   );
 
   valuesMap.set(
     "UNISWAP_V3_RECOMMENDED",
     `${formatPercent(tickRangeToAPR([recommendedLowerTick, recommendedUpperTick]))}% (LP from ${roundPrice(
-      tickToPrice(recommendedLowerTick)
-    )} DAI to ${roundPrice(tickToPrice(recommendedUpperTick))} DAI)`
+      tickToPrice(recommendedLowerTick),
+      7
+    )} DAI to ${roundPrice(tickToPrice(recommendedUpperTick),7)} DAI)`
   );
 
   valuesMap.set("UNISWAP_APR", formatPercent(tickRangeToAPR([recommendedLowerTick, recommendedUpperTick])));
@@ -253,8 +255,8 @@ export const createDoc = async (): Promise<Document> => {
     `FLX APR only, ignores trading fees income. Assuming a Safe with 250% cRatio and the recommended range indicated below. The optimal range is the smallest possible range to include both, the redemption price and the market price. The recommended range adds one tick on each side.`
   );
 
-  valuesMap.set("UNISWAP_V3_RAI_REDEMPTION_PRICE", roundPrice(redemptionPrice,6));
-  valuesMap.set("UNISWAP_V3_RAI_MARKET_PRICE", roundPrice(tickToPrice(marketPriceTick), 6));
+  valuesMap.set("UNISWAP_V3_RAI_REDEMPTION_PRICE", roundPrice(redemptionPrice,7));
+  valuesMap.set("UNISWAP_V3_RAI_MARKET_PRICE", roundPrice(tickToPrice(marketPriceTick), 7));
 
   valuesMap.set(
     "R2_UNISWAP_APR_NO_DETAIL",
