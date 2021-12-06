@@ -93,7 +93,7 @@ rounds:
         amount: 10 stkAAVE/day
         name: stkAAVE Rewards
         image: https://images.ctfassets.net/zql9qw49kkiw/2IW7cwomVasBu6Y6CFlIXY/70f9f1d30d0203746183d47348995f69/stkaave.svg
-        description: RAI lender and borrowers on Aave according to the <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">Aave liquidity mining program</a>.
+        description: RAI lender and borrowers on Aave according to the <a href="https://snapshot.org/#/aave.eth/proposal/QmeHAwW7XwUD3vqYLMRPF8MJiXkj2nnbRg1ae7mZ1SNQdm" target="_blank">Aave liquidity mining program</a>.
         link: https://app.aave.com/#/markets
 
       # - from: 2021-08-19T12:50Z
@@ -119,6 +119,14 @@ rounds:
         image: "https://images.ctfassets.net/zql9qw49kkiw/1jFpRuZGHZ1lrQnVOwPzaU/452c0d22d1673e2a89c6711d629eca09/88-logo.jpg"
         description: RAI depositors on 88mph fix yield lending.
         link: https://88mph.app/earn
+
+      - from: 2021-12-06T12:50Z
+        until: Ongoing
+        amount:  Variable DVF rewards 
+        name: Diversifi 
+        image: "https://images.ctfassets.net/zql9qw49kkiw/6rWMU9ox5m4OqAerPhPa1I/4d0d21f0a18d8c7599f1524081204e58/deversifi.png"
+        description: RAI LPs on Diversify. More info <a href="https://deversifi.com/blog/amm-liquidity-mining-reward-programme/" target="_blank">here</a>.
+        link: https://app.deversifi.com/pools/RAIETH
 
         
 uniV3PoolConfig:
