@@ -81,7 +81,7 @@ rounds:
         name: Idle
         image: https://images.ctfassets.net/zql9qw49kkiw/5YXKF364bp0A53OT5p5335/1ee924502ceaddad9bdc23a6cb5aec10/spaces_-Lw-v0NTae0RVW1spR9R_avatar.png
         description: RAI lenders on Idle Finance.
-        link: https://beta.idle.finance/#/dashboard/best/RAI
+        link: https://idle.finance/#/dashboard/best/RAI
         apy: "{{IDLE_APR_TOTAL}}%"
         apy_title: "APR"
         apy_description: "{{IDLE_APR}}"
