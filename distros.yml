@@ -123,7 +123,7 @@ rounds:
       - from: 2021-12-06T12:50Z
         until: Ongoing
         amount:  Variable DVF rewards 
-        name: Diversifi 
+        name: DiversiFi 
         image: "https://images.ctfassets.net/zql9qw49kkiw/6rWMU9ox5m4OqAerPhPa1I/4d0d21f0a18d8c7599f1524081204e58/deversifi.png"
         description: RAI LPs on Diversify. More info <a href="https://deversifi.com/blog/amm-liquidity-mining-reward-programme/" target="_blank">here</a>.
         link: https://app.deversifi.com/pools/RAIETH
