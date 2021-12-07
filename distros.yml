@@ -127,6 +127,14 @@ rounds:
         image: "https://images.ctfassets.net/zql9qw49kkiw/6rWMU9ox5m4OqAerPhPa1I/4d0d21f0a18d8c7599f1524081204e58/deversifi.png"
         description: RAI LPs on Diversify. More info <a href="https://deversifi.com/blog/amm-liquidity-mining-reward-programme/" target="_blank">here</a>.
         link: https://app.deversifi.com/pools/RAIETH
+      
+      - from: 2021-12-06T12:50Z
+        until: Ongoing
+        amount:  140/day
+        name: mStable 
+        image: "https://images.ctfassets.net/zql9qw49kkiw/6TpWaD0Kl4oYzSiGEZ0wBX/20cab7172c9451166f21fb59900598eb/mstable_logo_circle_m_black_smaller.png"
+        description: LPs in the mUSD/RAI mStable Feeder Pool. More info <a href="https://medium.com/mstable/mstable-launches-musd-rai-feeder-pool-db895b3abeda" target="_blank">here</a>.
+        link: https://mstable.app/#/musd/pools/0x36f944b7312eac89381bd78326df9c84691d8a5b
 
         
 uniV3PoolConfig:
