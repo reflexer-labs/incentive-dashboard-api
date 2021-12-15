@@ -8,7 +8,11 @@ export const coinGeckoPrice = async (id: string[]) => {
   const res = await Axios.get(
     `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${id.join(",")}`
   );
-  return res.data.map((x) => x.current_price) as number[];
+
+  return id.map(i => {
+    const gcData = res.data.find(x => x.id === i)
+    return gcData.current_price as number
+  })
 };
 
 export const bigNumberToNumber = (bn: BigNumber) => parseInt(bn.toString());
