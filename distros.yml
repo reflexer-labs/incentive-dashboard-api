@@ -4,8 +4,7 @@ rounds:
     snapshotDate: 2021-11-15T12:50Z
     # distributionDate: 2021-11-17T12:50Z
     distros:
-      - from: 2021-11-15T12:50Z
-        until: Ongoing
+      - until: Ongoing
         amount: 50 FLX/day
         name: Uniswap V2 RAI/ETH LP + Minter
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
@@ -17,8 +16,7 @@ rounds:
         optional:
           Pool size: ${{UNI_V2_ETH_RAI_POOL_SIZE}}
 
-      - from: 2021-10-13T12:50Z
-        until: Ongoing
+      - until: Ongoing
         amount: 110 FLX/day
         name: FLX/ETH Uniswap v2 stakers
         image: https://app.reflexer.finance/static/media/stFLX.f0676c46.svg
@@ -30,10 +28,9 @@ rounds:
         optional:
           Pool size: ${{FLX_STAKING_POOL_SIZE}}
       
-      - from: 2021-10-06T12:50Z
-        until: Ongoing
+      - until: Ongoing
         amount: 140 FLX/day
-        name: Uniswap V3 RAI/DAI LP + Minter.
+        name: Uniswap V3 RAI/DAI LP + Minter
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
         description: Mint RAI and LP in the 0.05% Uniswap v3 RAI/DAI Pool at redemption price and market price. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
         link: https://app.uniswap.org/#/add/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/0x6B175474E89094C44Da98b954EedeAC495271d0F/500
@@ -45,8 +42,7 @@ rounds:
           Optimal range APR: "{{UNISWAP_V3_OPTIMAL}}"
           Recommended range APR: "{{UNISWAP_V3_RECOMMENDED}}"
 
-      - from: 2021-11-03T12:50Z
-        until: Ongoing
+      - until: Ongoing
         amount: 10 FLX/day
         name: Aave
         image: https://images.ctfassets.net/zql9qw49kkiw/6nP27R0M7Nl3LPaBMMNC08/954b4692406149d6277035c1088eda0d/aave-aave-logo.png
@@ -60,8 +56,7 @@ rounds:
           RAI supply APY: "{{AAVE_RAI_SUPPLY_APY}}%"
           RAI borrow APY: "{{AAVE_RAI_BORROW_APY}}%"
 
-      - from: 2021-08-25T12:50Z
-        until: Ongoing
+      - until: Ongoing
         amount: 10 FLX/day
         name: Fuse
         image: https://images.ctfassets.net/zql9qw49kkiw/Nk896mcOyp2fSNse6rhbT/aaeda9b0e9c011f6a5d78f48edb1e931/finallogo-onblack-copy.png
@@ -75,8 +70,7 @@ rounds:
           # RAI supply APY: "{{FUSE_RAI_SUPPLY_APY}}%"
           # RAI borrow APY: "{{FUSE_RAI_BORROW_APY}}%"
 
-      - from: 2021-06-17T12:50Z
-        until: Ongoing
+      - until: Ongoing
         amount: 10 FLX/day
         name: Idle
         image: https://images.ctfassets.net/zql9qw49kkiw/5YXKF364bp0A53OT5p5335/1ee924502ceaddad9bdc23a6cb5aec10/spaces_-Lw-v0NTae0RVW1spR9R_avatar.png
@@ -88,8 +82,7 @@ rounds:
         optional:
           Pool Size: "${{IDLE_POOL_SIZE}}"
 
-      - from: 2021-08-19T12:50Z
-        until: Ongoing
+      - until: Ongoing
         amount: 10 stkAAVE/day
         name: stkAAVE Rewards
         image: https://images.ctfassets.net/zql9qw49kkiw/2IW7cwomVasBu6Y6CFlIXY/70f9f1d30d0203746183d47348995f69/stkaave.svg
@@ -104,33 +97,29 @@ rounds:
       #   description: RAI-AVAX LPs on Pangolin (Avalanche chain). More info <a href="https://pangolindex.medium.com/pangolin-and-reflexer-form-a-partnership-to-bring-non-pegged-stablecoins-to-avalanche-aac0f2839674" target="_blank">here</a>.
       #   link: https://app.pangolin.exchange/#/png/AVAX/0x97Cd1CFE2ed5712660bb6c14053C0EcB031Bff7d/1
       
-      - from: 2021-08-19T12:50Z
-        until: Ongoing
+      - until: Ongoing
         amount: variable POLLY rewards
         name: Polly Finance 
         image: "https://images.ctfassets.net/zql9qw49kkiw/66lq8ZZ0EysBYRLB2wR0V3/4dbe7bd3301a1f8b5d1a56c55811e6f2/logo.ea3bdc41.svg"
         description: RAI farms on Polly Finance. More info <a href="https://docs.bao.finance/franchises/polly/contracts-and-key-info#tokens" target="_blank">here</a>.
         link: https://pollyfinance.com/farms?ref=null
       
-      - from: 2021-08-19T12:50Z
-        until: Ongoing
+      - until: Ongoing
         amount:  Variable MPH rewards 
         name: 88mph 
         image: "https://images.ctfassets.net/zql9qw49kkiw/1jFpRuZGHZ1lrQnVOwPzaU/452c0d22d1673e2a89c6711d629eca09/88-logo.jpg"
         description: RAI depositors on 88mph fix yield lending.
         link: https://88mph.app/earn
 
-      - from: 2021-12-06T12:50Z
-        until: Ongoing
+      - until: Ongoing
         amount:  Variable DVF rewards 
         name: DiversiFi 
         image: "https://images.ctfassets.net/zql9qw49kkiw/6rWMU9ox5m4OqAerPhPa1I/4d0d21f0a18d8c7599f1524081204e58/deversifi.png"
         description: RAI LPs on Diversify. More info <a href="https://deversifi.com/blog/amm-liquidity-mining-reward-programme/" target="_blank">here</a>.
         link: https://app.deversifi.com/pools/RAIETH
       
-      - from: 2021-12-06T12:50Z
-        until: Ongoing
-        amount:  140/day
+      - until: Ongoing
+        amount:  Variable MTA rewards
         name: mStable 
         image: "https://images.ctfassets.net/zql9qw49kkiw/6TpWaD0Kl4oYzSiGEZ0wBX/20cab7172c9451166f21fb59900598eb/mstable_logo_circle_m_black_smaller.png"
         description: LPs in the mUSD/RAI mStable Feeder Pool. More info <a href="https://medium.com/mstable/mstable-launches-musd-rai-feeder-pool-db895b3abeda" target="_blank">here</a>.
