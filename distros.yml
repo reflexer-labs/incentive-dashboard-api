@@ -5,16 +5,18 @@ rounds:
     # distributionDate: 2021-11-17T12:50Z
     distros:
       - until: Ongoing
-        amount: 20 FLX/day
-        name: Uniswap V2 RAI/ETH LP + Minter
+        amount: 120 FLX/day
+        name: Uniswap V3 RAI/DAI LP + Minter
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
-        description: Mint + LP in the Uniswap v2 RAI/ETH Pool. More <a href="https://docs.reflexer.finance/incentives/rai-mint-+-lp-incentives-program" target="_blank">here</a>
-        link: https://app.uniswap.org/#/add/v2/0x03ab458634910aad20ef5f1c8ee96f1d6ac54919/ETH
-        apy: "{{UNI_V2_ETH_RAI_APR}}%"
+        description: Mint RAI and LP in the 0.05% Uniswap v3 RAI/DAI Pool at redemption price and market price. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
+        link: https://app.uniswap.org/#/add/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/0x6B175474E89094C44Da98b954EedeAC495271d0F/500
+        apy: "{{UNISWAP_APR}}%"
         apy_title: "FLX APR"
-        apy_description: "Assuming 250% safe cRatio, not including Uniswap fees revenue"
+        apy_description: "{{UNISWAP_APR_DESC}}"
         optional:
-          Pool size: ${{UNI_V2_ETH_RAI_POOL_SIZE}}
+          Current state: "RAI redemption price: {{UNISWAP_V3_RAI_REDEMPTION_PRICE}} RAI market price:  {{UNISWAP_V3_RAI_MARKET_PRICE}}"
+          Optimal range APR: "{{UNISWAP_V3_OPTIMAL}}"
+          Recommended range APR: "{{UNISWAP_V3_RECOMMENDED}}"
 
       - until: Ongoing
         amount: 110 FLX/day
@@ -27,20 +29,36 @@ rounds:
         apy_description: "FLX APR only, does not include fee revenue and potential impermanent loss."
         optional:
           Pool size: ${{FLX_STAKING_POOL_SIZE}}
-      
+
       - until: Ongoing
-        amount: 140 FLX/day
-        name: Uniswap V3 RAI/DAI LP + Minter
+        amount: Variable CRV & CVX rewards
+        name: Curve
+        image: https://images.ctfassets.net/zql9qw49kkiw/U58XiobjLN7V8S57JZNUz/9e317996f097bb0c1006fb932be16cfa/convex.png
+        description: RAI LP on Curve or on Curve through Convex. More <a href="https://docs.convexfinance.com/convexfinance/guides/depositing/curve-lp-tokens" target="_blank">here</a>
+        link: https://www.convexfinance.com/stake
+        # apy: "{{UNISWAP_APR}}%"
+        # apy_title: "CRV+CVX APR"
+        # apy_description: "Current APR from Convex, includes base pool APR, CRV APR, CVX APR and substract Convex admin fees"
+
+      - until: Ongoing
+        amount: 840 FLX per 2 weeks
+        name: Votium
+        image: https://images.ctfassets.net/zql9qw49kkiw/2jCOZ1czEulX4YTWPjzFUB/757fe99bec804a7924675322f7d3e7ba/votium.png
+        description: CVX stakers that vote for the RAI pool on the Convex bi-weekly snapshot vote. More <a href="https://docs.votium.app/explainers/voter-manual" target="_blank">here</a>
+        link: https://votium.app/
+
+
+      - until: Ongoing
+        amount: 20 FLX/day
+        name: Uniswap V2 RAI/ETH LP + Minter
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
-        description: Mint RAI and LP in the 0.05% Uniswap v3 RAI/DAI Pool at redemption price and market price. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
-        link: https://app.uniswap.org/#/add/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/0x6B175474E89094C44Da98b954EedeAC495271d0F/500
-        apy: "{{UNISWAP_APR}}%"
+        description: Mint + LP in the Uniswap v2 RAI/ETH Pool. More <a href="https://docs.reflexer.finance/incentives/rai-mint-+-lp-incentives-program" target="_blank">here</a>
+        link: https://app.uniswap.org/#/add/v2/0x03ab458634910aad20ef5f1c8ee96f1d6ac54919/ETH
+        apy: "{{UNI_V2_ETH_RAI_APR}}%"
         apy_title: "FLX APR"
-        apy_description: "{{UNISWAP_APR_DESC}}"
+        apy_description: "Assuming 250% safe cRatio, not including Uniswap fees revenue"
         optional:
-          Current state: "RAI redemption price: {{UNISWAP_V3_RAI_REDEMPTION_PRICE}} RAI market price:  {{UNISWAP_V3_RAI_MARKET_PRICE}}"
-          Optimal range APR: "{{UNISWAP_V3_OPTIMAL}}"
-          Recommended range APR: "{{UNISWAP_V3_RECOMMENDED}}"
+          Pool size: ${{UNI_V2_ETH_RAI_POOL_SIZE}}
 
       - until: Ongoing
         amount: 10 FLX/day
