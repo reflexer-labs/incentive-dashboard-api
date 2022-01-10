@@ -32,9 +32,9 @@ rounds:
 
       - until: Ongoing
         amount: Variable CRV & CVX rewards
-        name: Curve
+        name: Convex Finance
         image: https://images.ctfassets.net/zql9qw49kkiw/U58XiobjLN7V8S57JZNUz/9e317996f097bb0c1006fb932be16cfa/convex.png
-        description: RAI LP on Curve or on Curve through Convex. More <a href="https://docs.convexfinance.com/convexfinance/guides/depositing/curve-lp-tokens" target="_blank">here</a>
+        description: RAI LP on Convex or Curve. More <a href="https://docs.convexfinance.com/convexfinance/guides/depositing/curve-lp-tokens" target="_blank">here</a>
         link: https://www.convexfinance.com/stake
         # apy: "{{UNISWAP_APR}}%"
         # apy_title: "CRV+CVX APR"
