@@ -200,8 +200,7 @@ export const createDoc = async (): Promise<Document> => {
   // Uniswap V3
   const tickSpacing = 10;
   const tickToPrice = (tick: number) => 1.0001 ** tick;
-  const roundPrice = (price: number, dec = 4) =>
-    (Math.round(price * 10 ** dec) / 10 ** dec).toString();
+  const roundPrice = (price: number, dec = 4) => (Math.round(price * 10 ** dec) / 10 ** dec).toString();
   const priceToTick = (price: number) => Math.log(price) / Math.log(1.0001);
   const flooredTick = (tick: number, tickSpacing: number) =>
     Math.floor(tick) - (Math.floor(tick) % tickSpacing);
@@ -209,20 +208,43 @@ export const createDoc = async (): Promise<Document> => {
   const marketPriceTick = multiCallData[14].tick;
   const redemptionPriceTick = priceToTick(redemptionPrice);
 
-  const optimalLowerTick = flooredTick(Math.min(marketPriceTick, redemptionPriceTick), tickSpacing);
-  const optimalUpperTick =
+  const deltaLowerTick = flooredTick(Math.min(marketPriceTick, redemptionPriceTick), tickSpacing);
+  const deltaUpperTick =
     flooredTick(Math.max(marketPriceTick, redemptionPriceTick), tickSpacing) + tickSpacing;
 
-  const recommendedLowerTick = optimalLowerTick - tickSpacing;
+  let nTick = deltaUpperTick - deltaLowerTick;
 
-  const recommendedUpperTick = optimalUpperTick + tickSpacing;
+  let i = 0;
+  let optimalLowerTick = deltaLowerTick;
+  let optimalUpperTick = deltaUpperTick;
+
+  let MIN_TICKS_RANGE = 50;
+
+  while (nTick < MIN_TICKS_RANGE) {
+    if (i % 2 === 0) {
+      optimalLowerTick -= tickSpacing;
+    } else {
+      optimalUpperTick += tickSpacing;
+    }
+  }
+
+  let recommendedLowerTick = optimalLowerTick - tickSpacing * 2;
+  let recommendedUpperTick = optimalUpperTick + tickSpacing * 2;
 
   const allUniV3Position = await getUniV3Positions();
   const totalLiquidity = allUniV3Position
     // Filter positions that are in rnage
+    // .filter(
+    //   (p) =>
+    //     Number(p.tickLower.tickIdx) <= optimalLowerTick && Number(p.tickUpper.tickIdx) >= optimalUpperTick
+    // )
     .filter(
       (p) =>
-        Number(p.tickLower.tickIdx) <= optimalLowerTick && Number(p.tickUpper.tickIdx) >= optimalUpperTick
+        Number(p.tickLower.tickIdx) <= marketPriceTick &&
+        Number(p.tickLower.tickIdx) <= redemptionPriceTick &&
+        Number(p.tickUpper.tickIdx) >= marketPriceTick &&
+        Number(p.tickUpper.tickIdx) >= redemptionPriceTick &&
+        Number(p.tickUpper.tickIdx) - Number(p.tickLower.tickIdx) >= 50
     )
     // Sum all liquidity
     .reduce((acc, p) => acc + Number(p.liquidity), 0);
@@ -235,7 +257,7 @@ export const createDoc = async (): Promise<Document> => {
   valuesMap.set(
     "UNISWAP_V3_OPTIMAL",
     `${formatPercent(tickRangeToAPR([optimalLowerTick, optimalUpperTick]))}% (LP from ${roundPrice(
-      tickToPrice(optimalLowerTick), 
+      tickToPrice(optimalLowerTick),
       7
     )} DAI to ${roundPrice(tickToPrice(optimalUpperTick), 7)} DAI)`
   );
@@ -245,18 +267,18 @@ export const createDoc = async (): Promise<Document> => {
     `${formatPercent(tickRangeToAPR([recommendedLowerTick, recommendedUpperTick]))}% (LP from ${roundPrice(
       tickToPrice(recommendedLowerTick),
       7
-    )} DAI to ${roundPrice(tickToPrice(recommendedUpperTick),7)} DAI)`
+    )} DAI to ${roundPrice(tickToPrice(recommendedUpperTick), 7)} DAI)`
   );
 
-  valuesMap.set("UNISWAP_APR", formatPercent(tickRangeToAPR([recommendedLowerTick, recommendedUpperTick])));
+  valuesMap.set("UNISWAP_APR", formatPercent(tickRangeToAPR([optimalLowerTick, optimalUpperTick])));
 
   valuesMap.set(
     "UNISWAP_APR_DESC",
-    `FLX APR only, ignores trading fees income. Assuming a Safe with 250% cRatio and the recommended range indicated below. The optimal range is the smallest possible range to include both, the redemption price and the market price. The recommended range adds one tick on each side.`
+    `FLX APR only, ignores trading fees income. Assuming a Safe with 250% cRatio and the optimal range indicated below. The optimal range is 5 tick wide if the redemption price and the market price are within 5 ticks.`
   );
 
-  valuesMap.set("UNISWAP_V3_RAI_REDEMPTION_PRICE", roundPrice(redemptionPrice,7));
-  valuesMap.set("UNISWAP_V3_RAI_MARKET_PRICE", roundPrice(tickToPrice(marketPriceTick), 7));
+  valuesMap.set("UNISWAP_V3_RAI_REDEMPTION_PRICE", roundPrice(redemptionPrice, 6));
+  valuesMap.set("UNISWAP_V3_RAI_MARKET_PRICE", roundPrice(tickToPrice(marketPriceTick), 6));
 
   valuesMap.set(
     "R2_UNISWAP_APR_NO_DETAIL",
@@ -264,7 +286,7 @@ export const createDoc = async (): Promise<Document> => {
   );
   valuesMap.set(
     "R3_UNISWAP_APR_NO_DETAIL",
-    formatPercent(tickRangeToAPR([recommendedLowerTick, recommendedUpperTick]))
+    formatPercent(tickRangeToAPR([optimalLowerTick, optimalUpperTick]))
   );
 
   setPropertyRecursive(rawDoc, valuesMap);
