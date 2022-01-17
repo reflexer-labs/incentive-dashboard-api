@@ -14,7 +14,7 @@ rounds:
         apy_title: "FLX APR"
         apy_description: "{{UNISWAP_APR_DESC}}"
         optional:
-          Current state: "RAI redemption price: {{UNISWAP_V3_RAI_REDEMPTION_PRICE}} RAI market price:  {{UNISWAP_V3_RAI_MARKET_PRICE}}"
+          Current state: "RAI redemption price: {{UNISWAP_V3_RAI_REDEMPTION_PRICE}}, RAI market price:  {{UNISWAP_V3_RAI_MARKET_PRICE}}"
           Optimal range: "{{UNISWAP_V3_OPTIMAL}}"
           Recommended range: "{{UNISWAP_V3_RECOMMENDED}}"
 

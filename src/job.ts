@@ -256,7 +256,7 @@ export const createDoc = async (): Promise<Document> => {
 
   valuesMap.set(
     "UNISWAP_V3_OPTIMAL",
-    `${formatPercent(tickRangeToAPR([optimalLowerTick, optimalUpperTick]))}% (LP from ${roundPrice(
+    `${formatPercent(tickRangeToAPR([optimalLowerTick, optimalUpperTick]))}% APR (LP from ${roundPrice(
       tickToPrice(optimalLowerTick),
       4
     )} DAI to ${roundPrice(tickToPrice(optimalUpperTick), 4)} DAI)`
@@ -264,13 +264,13 @@ export const createDoc = async (): Promise<Document> => {
 
   valuesMap.set(
     "UNISWAP_V3_RECOMMENDED",
-    `${formatPercent(tickRangeToAPR([recommendedLowerTick, recommendedUpperTick]))}% (LP from ${roundPrice(
+    `${formatPercent(tickRangeToAPR([recommendedLowerTick, recommendedUpperTick]))}% APR (LP from ${roundPrice(
       tickToPrice(recommendedLowerTick),
       4
     )} DAI to ${roundPrice(tickToPrice(recommendedUpperTick), 4)} DAI)`
   );
 
-  valuesMap.set("UNISWAP_APR", formatPercent(tickRangeToAPR([optimalLowerTick, optimalUpperTick])));
+  valuesMap.set("UNISWAP_APR", formatPercent(tickRangeToAPR([recommendedLowerTick, recommendedUpperTick])));
 
   valuesMap.set(
     "UNISWAP_APR_DESC",
