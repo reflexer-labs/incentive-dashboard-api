@@ -122,7 +122,6 @@ export const createDoc = async (): Promise<Document> => {
     coinGeckoPrice(["rai", "reflexer-ungovernance-token"]),
     multicall,
   ]);
-
   // == Populate map ==
 
   // Uniswap -- ETH/RAI pool APR
@@ -212,25 +211,22 @@ export const createDoc = async (): Promise<Document> => {
   const deltaUpperTick =
     flooredTick(Math.max(marketPriceTick, redemptionPriceTick), tickSpacing) + tickSpacing;
 
-  let nTick = deltaUpperTick - deltaLowerTick;
-
   let i = 0;
   let optimalLowerTick = deltaLowerTick;
   let optimalUpperTick = deltaUpperTick;
+  let MIN_TICKS_RANGE = tickSpacing * 5;
 
-  let MIN_TICKS_RANGE = 50;
-
-  while (nTick < MIN_TICKS_RANGE) {
+  while (optimalUpperTick - optimalLowerTick < MIN_TICKS_RANGE) {
     if (i % 2 === 0) {
       optimalLowerTick -= tickSpacing;
     } else {
       optimalUpperTick += tickSpacing;
     }
+    i++;
   }
 
   let recommendedLowerTick = optimalLowerTick - tickSpacing * 2;
   let recommendedUpperTick = optimalUpperTick + tickSpacing * 2;
-
   const allUniV3Position = await getUniV3Positions();
   const totalLiquidity = allUniV3Position
     // Filter positions that are in rnage
@@ -264,10 +260,12 @@ export const createDoc = async (): Promise<Document> => {
 
   valuesMap.set(
     "UNISWAP_V3_RECOMMENDED",
-    `${formatPercent(tickRangeToAPR([recommendedLowerTick, recommendedUpperTick]))}% APR (LP from ${roundPrice(
-      tickToPrice(recommendedLowerTick),
+    `${formatPercent(
+      tickRangeToAPR([recommendedLowerTick, recommendedUpperTick])
+    )}% APR (LP from ${roundPrice(tickToPrice(recommendedLowerTick), 4)} DAI to ${roundPrice(
+      tickToPrice(recommendedUpperTick),
       4
-    )} DAI to ${roundPrice(tickToPrice(recommendedUpperTick), 4)} DAI)`
+    )} DAI)`
   );
 
   valuesMap.set("UNISWAP_APR", formatPercent(tickRangeToAPR([recommendedLowerTick, recommendedUpperTick])));
