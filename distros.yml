@@ -65,7 +65,7 @@ rounds:
         name: Aave
         image: https://images.ctfassets.net/zql9qw49kkiw/6nP27R0M7Nl3LPaBMMNC08/954b4692406149d6277035c1088eda0d/aave-aave-logo.png
         description: RAI borrowers on Aave v2
-        link: https://app.aave.com/reserve-overview/RAI-0x03ab458634910aad20ef5f1c8ee96f1d6ac549190xb53c1a33016b2dc2ff3653530bff1848a515c8c5
+        link: https://app.aave.com/reserve-overview/?underlyingAsset=0x03ab458634910aad20ef5f1c8ee96f1d6ac54919&marketName=proto_mainnet
         apy: "{{AAVE_FLX_APR}}%"
         apy_title: "FLX APR"
         apy_description: "Assuming 65% LTV, not including borrow APY"
