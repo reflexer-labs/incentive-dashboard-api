@@ -100,12 +100,6 @@ rounds:
         optional:
           Pool Size: "${{IDLE_POOL_SIZE}}"
 
-      - until: Ongoing
-        amount: 10 stkAAVE/day
-        name: stkAAVE Rewards
-        image: https://images.ctfassets.net/zql9qw49kkiw/2IW7cwomVasBu6Y6CFlIXY/70f9f1d30d0203746183d47348995f69/stkaave.svg
-        description: RAI lender and borrowers on Aave according to the <a href="https://snapshot.org/#/aave.eth/proposal/QmeHAwW7XwUD3vqYLMRPF8MJiXkj2nnbRg1ae7mZ1SNQdm" target="_blank">Aave liquidity mining program</a>.
-        link: https://app.aave.com/#/markets
 
       # - from: 2021-08-19T12:50Z
       #   until: Ongoing
