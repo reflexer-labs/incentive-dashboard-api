@@ -247,7 +247,7 @@ export const createDoc = async (): Promise<Document> => {
 
   const tickRangeToAPR = (arr: number[]) => {
     const liquidity = 1e18 / (1.0001 ** (arr[1] / 2) - 1.0001 ** (arr[0] / 2));
-    return (((liquidity / totalLiquidity) * 120 * 365 * flxPrice) / 2.5) * 100;
+    return (((liquidity / totalLiquidity) * 110 * 365 * flxPrice) / 2.5) * 100;
   };
 
   valuesMap.set(

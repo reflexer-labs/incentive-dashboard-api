@@ -5,7 +5,7 @@ rounds:
     # distributionDate: 2021-11-17T12:50Z
     distros:
       - until: Ongoing
-        amount: 120 FLX/day
+        amount: 110 FLX/day
         name: Uniswap V3 RAI/DAI LP + Minter
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
         description: Mint RAI and LP on at least 5 ticks at redemption price and market price in the 0.05% Uniswap v3 RAI/DAI Pool. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
@@ -19,7 +19,7 @@ rounds:
           Recommended range: "{{UNISWAP_V3_RECOMMENDED}}"
 
       - until: Ongoing
-        amount: 110 FLX/day
+        amount: 100 FLX/day
         name: FLX/ETH Uniswap v2 stakers
         image: https://app.reflexer.finance/static/media/stFLX.f0676c46.svg
         description: Uniswap v2 FLX/ETH LP stakers. More <a href="https://docs.reflexer.finance/incentives/flx-staking" target="_blank">here</a>
@@ -73,44 +73,9 @@ rounds:
           Total RAI borrows: "${{AAVE_RAI_POOL_SIZE}}"
           RAI supply APY: "{{AAVE_RAI_SUPPLY_APY}}%"
           RAI borrow APY: "{{AAVE_RAI_BORROW_APY}}%"
-
-      - until: Ongoing
-        amount: 10 FLX/day
-        name: Fuse
-        image: https://images.ctfassets.net/zql9qw49kkiw/Nk896mcOyp2fSNse6rhbT/aaeda9b0e9c011f6a5d78f48edb1e931/finallogo-onblack-copy.png
-        description: RAI borrowers in the Fuse pool 9 that are using USDC, DAI or FRAX as collateral.
-        link: https://app.rari.capital/fuse/pool/9
-        apy: "{{FUSE_FLX_APR}}%"
-        apy_title: "FLX APR"
-        apy_description: "Assuming 65% LTV, not including borrow APY"
-        optional:
-          Total RAI borrows: "${{FUSE_RAI_POOL_SIZE}}"
-          # RAI supply APY: "{{FUSE_RAI_SUPPLY_APY}}%"
-          # RAI borrow APY: "{{FUSE_RAI_BORROW_APY}}%"
-
-      - until: Ongoing
-        amount: 10 FLX/day
-        name: Idle
-        image: https://images.ctfassets.net/zql9qw49kkiw/5YXKF364bp0A53OT5p5335/1ee924502ceaddad9bdc23a6cb5aec10/spaces_-Lw-v0NTae0RVW1spR9R_avatar.png
-        description: RAI lenders on Idle Finance.
-        link: https://idle.finance/#/dashboard/best/RAI
-        apy: "{{IDLE_APR_TOTAL}}%"
-        apy_title: "APR"
-        apy_description: "{{IDLE_APR}}"
-        optional:
-          Pool Size: "${{IDLE_POOL_SIZE}}"
-
-
-      # - from: 2021-08-19T12:50Z
-      #   until: Ongoing
-      #   amount: 21 PNG/day
-      #   name: Pangolin
-      #   image: "https://images.ctfassets.net/zql9qw49kkiw/3xEx76YYUGuakXvVHWMEWb/ba2e151edd9111a3f3cf533c424b0d89/logo__1_.png"
-      #   description: RAI-AVAX LPs on Pangolin (Avalanche chain). More info <a href="https://pangolindex.medium.com/pangolin-and-reflexer-form-a-partnership-to-bring-non-pegged-stablecoins-to-avalanche-aac0f2839674" target="_blank">here</a>.
-      #   link: https://app.pangolin.exchange/#/png/AVAX/0x97Cd1CFE2ed5712660bb6c14053C0EcB031Bff7d/1
       
       - until: Ongoing
-        amount: variable POLLY rewards
+        amount: Variable POLLY rewards
         name: Polly Finance 
         image: "https://images.ctfassets.net/zql9qw49kkiw/66lq8ZZ0EysBYRLB2wR0V3/4dbe7bd3301a1f8b5d1a56c55811e6f2/logo.ea3bdc41.svg"
         description: RAI farms on Polly Finance. More info <a href="https://docs.bao.finance/franchises/polly/contracts-and-key-info#tokens" target="_blank">here</a>.
@@ -129,13 +94,6 @@ rounds:
         image: "https://images.ctfassets.net/zql9qw49kkiw/6rWMU9ox5m4OqAerPhPa1I/4d0d21f0a18d8c7599f1524081204e58/deversifi.png"
         description: RAI LPs on Diversify. More info <a href="https://deversifi.com/blog/amm-liquidity-mining-reward-programme/" target="_blank">here</a>.
         link: https://app.deversifi.com/pools/RAIETH
-      
-      - until: Ongoing
-        amount:  Variable MTA rewards
-        name: mStable 
-        image: "https://images.ctfassets.net/zql9qw49kkiw/6TpWaD0Kl4oYzSiGEZ0wBX/20cab7172c9451166f21fb59900598eb/mstable_logo_circle_m_black_smaller.png"
-        description: LPs in the mUSD/RAI mStable Feeder Pool. More info <a href="https://medium.com/mstable/mstable-launches-musd-rai-feeder-pool-db895b3abeda" target="_blank">here</a>.
-        link: https://mstable.app/#/musd/pools/0x36f944b7312eac89381bd78326df9c84691d8a5b
 
         
 uniV3PoolConfig:
