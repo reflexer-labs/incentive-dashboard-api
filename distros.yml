@@ -53,11 +53,11 @@ rounds:
         # apy_description: "Current APR from Convex, includes base pool APR, CRV APR, CVX APR and substract Convex admin fees"
 
       - until: Ongoing
-        amount: 840 FLX per 2 weeks
-        name: Votium
-        image: https://images.ctfassets.net/zql9qw49kkiw/2jCOZ1czEulX4YTWPjzFUB/757fe99bec804a7924675322f7d3e7ba/votium.png
-        description: CVX stakers that vote for the RAI pool on the Convex bi-weekly snapshot vote. More <a href="https://docs.votium.app/explainers/voter-manual" target="_blank">here</a>
-        link: https://votium.app/
+        amount: 40 FLX/day
+        name: Curve Finance
+        image: https://images.ctfassets.net/zql9qw49kkiw/2Blf7JTMfHaPK5RBGrTxl1/e2a59ed15d33012d1f7ca897129eef04/curve-logo.png?h=250
+        description: RAI LPs on curve, direct holders of the RAI-3CRV LP token only (Convex unsupported).
+        link: https://curve.fi/rai/deposit
 
 
 
