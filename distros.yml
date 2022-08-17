@@ -43,6 +43,13 @@ rounds:
           Pool size: ${{FLX_STAKING_POOL_SIZE}}
 
       - until: Ongoing
+        amount: 40 FLX/day
+        name: Curve Finance
+        image: https://images.ctfassets.net/zql9qw49kkiw/2Blf7JTMfHaPK5RBGrTxl1/e2a59ed15d33012d1f7ca897129eef04/curve-logo.png?h=250
+        description: RAI LPs on curve, direct holders of the RAI-3CRV LP token only (Convex unsupported).
+        link: https://curve.fi/rai/deposit
+
+      - until: Ongoing
         amount: Variable CRV & CVX rewards
         name: Convex Finance
         image: https://images.ctfassets.net/zql9qw49kkiw/U58XiobjLN7V8S57JZNUz/9e317996f097bb0c1006fb932be16cfa/convex.png
@@ -52,12 +59,6 @@ rounds:
         # apy_title: "CRV+CVX APR"
         # apy_description: "Current APR from Convex, includes base pool APR, CRV APR, CVX APR and substract Convex admin fees"
 
-      - until: Ongoing
-        amount: 40 FLX/day
-        name: Curve Finance
-        image: https://images.ctfassets.net/zql9qw49kkiw/2Blf7JTMfHaPK5RBGrTxl1/e2a59ed15d33012d1f7ca897129eef04/curve-logo.png?h=250
-        description: RAI LPs on curve, direct holders of the RAI-3CRV LP token only (Convex unsupported).
-        link: https://curve.fi/rai/deposit
 
 
 
