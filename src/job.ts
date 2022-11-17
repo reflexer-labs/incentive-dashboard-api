@@ -128,7 +128,7 @@ export const createDoc = async (): Promise<Document> => {
   const raiInUniV2RaiEth = bigNumberToNumber(multiCallData[0]._reserve0) / 1e18;
   valuesMap.set(
     "UNI_V2_ETH_RAI_APR",
-    formatPercent(((40 * 365 * flxPrice) / (raiInUniV2RaiEth * 2 * raiPrice)) * 100)
+    formatPercent(((30 * 365 * flxPrice) / (raiInUniV2RaiEth * 2 * raiPrice)) * 100)
   );
 
   // Uniswap -- ETH/RAI pool size
@@ -247,7 +247,7 @@ export const createDoc = async (): Promise<Document> => {
 
   const tickRangeToAPR = (arr: number[]) => {
     const liquidity = 1e18 / (1.0001 ** (arr[1] / 2) - 1.0001 ** (arr[0] / 2));
-    return (((liquidity / totalLiquidity) * 80 * 365 * flxPrice) / 2.5) * 100;
+    return (((liquidity / totalLiquidity) * 60 * 365 * flxPrice) / 2.5) * 100;
   };
 
   valuesMap.set(
