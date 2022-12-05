@@ -5,7 +5,7 @@ rounds:
     # distributionDate: 2021-11-17T12:50Z
     distros:
       - until: Ongoing
-        amount: 80 FLX/day
+        amount: 60 FLX/day
         name: Uniswap V3 RAI/DAI LP + Minter
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
         description: Mint RAI and LP on at least 5 ticks at redemption price and market price in the 0.05% Uniswap v3 RAI/DAI Pool. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
@@ -19,7 +19,7 @@ rounds:
           Recommended range: "{{UNISWAP_V3_RECOMMENDED}}"
 
       - until: Ongoing
-        amount: 40 FLX/day
+        amount: 30 FLX/day
         name: Uniswap V2 RAI/ETH LP
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
         description: LP in the Uniswap v2 RAI/ETH Pool. More <a href="https://docs.reflexer.finance/incentives/rai-mint-+-lp-incentives-program" target="_blank">here</a>
@@ -43,7 +43,7 @@ rounds:
           Pool size: ${{FLX_STAKING_POOL_SIZE}}
 
       - until: Ongoing
-        amount: 40 FLX/day
+        amount: 30 FLX/day
         name: Curve Finance
         image: https://images.ctfassets.net/zql9qw49kkiw/2Blf7JTMfHaPK5RBGrTxl1/e2a59ed15d33012d1f7ca897129eef04/curve-logo.png?h=250
         description: RAI LPs on curve, direct holders of the RAI-3CRV LP token only (Convex unsupported).
