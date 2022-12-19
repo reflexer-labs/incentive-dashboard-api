@@ -31,7 +31,7 @@ rounds:
           Pool size: ${{UNI_V2_ETH_RAI_POOL_SIZE}}
 
       - until: Ongoing
-        amount: 100 FLX/day
+        amount: 87.5 FLX/day
         name: FLX/ETH Uniswap v2 stakers
         image: https://app.reflexer.finance/static/media/stFLX.f0676c46.svg
         description: Uniswap v2 FLX/ETH LP stakers. More <a href="https://docs.reflexer.finance/incentives/flx-staking" target="_blank">here</a>
