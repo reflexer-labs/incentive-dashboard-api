@@ -4,19 +4,19 @@ rounds:
     snapshotDate: 2023-04-15T12:50Z
     # distributionDate: 2021-11-17T12:50Z
     distros:
-      - until: Ongoing
-        amount: 10 FLX/day
-        name: Uniswap V3 RAI/DAI LP + Minter
-        image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
-        description: Mint RAI and LP on at least 5 ticks at redemption price and market price in the 0.05% Uniswap v3 RAI/DAI Pool. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
-        link: https://app.uniswap.org/#/add/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/0x6B175474E89094C44Da98b954EedeAC495271d0F/500
-        apy: "{{UNISWAP_APR}}%"
-        apy_title: "FLX APR"
-        apy_description: "{{UNISWAP_APR_DESC}}"
-        optional:
-          Current state: "RAI redemption price: {{UNISWAP_V3_RAI_REDEMPTION_PRICE}}, RAI market price:  {{UNISWAP_V3_RAI_MARKET_PRICE}}"
-          Optimal range: "{{UNISWAP_V3_OPTIMAL}}"
-          Recommended range: "{{UNISWAP_V3_RECOMMENDED}}"
+      # - until: Ongoing
+      #   amount: 10 FLX/day
+      #   name: Uniswap V3 RAI/DAI LP + Minter
+      #   image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
+      #   description: Mint RAI and LP on at least 5 ticks at redemption price and market price in the 0.05% Uniswap v3 RAI/DAI Pool. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
+      #   link: https://app.uniswap.org/#/add/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/0x6B175474E89094C44Da98b954EedeAC495271d0F/500
+      #   apy: "{{UNISWAP_APR}}%"
+      #   apy_title: "FLX APR"
+      #   apy_description: "{{UNISWAP_APR_DESC}}"
+      #   optional:
+      #     Current state: "RAI redemption price: {{UNISWAP_V3_RAI_REDEMPTION_PRICE}}, RAI market price:  {{UNISWAP_V3_RAI_MARKET_PRICE}}"
+      #     Optimal range: "{{UNISWAP_V3_OPTIMAL}}"
+      #     Recommended range: "{{UNISWAP_V3_RECOMMENDED}}"
 
       - until: Ongoing
         amount: 30 FLX/day
