@@ -1,25 +1,27 @@
 rounds:
   - number: 24
     name: Current RAI Incentives
-    snapshotDate: 2023-04-15T12:50Z
+    snapshotDate: 2024-01-15T12:50Z
     # distributionDate: 2021-11-17T12:50Z
     distros:
-      # - until: Ongoing
-      #   amount: 10 FLX/day
-      #   name: Uniswap V3 RAI/DAI LP + Minter
-      #   image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
-      #   description: Mint RAI and LP on at least 5 ticks at redemption price and market price in the 0.05% Uniswap v3 RAI/DAI Pool. More <a href="https://docs.reflexer.finance/incentives/rai-uniswap-v3-mint-+-lp-incentives-program" target="_blank">here</a>
-      #   link: https://app.uniswap.org/#/add/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/0x6B175474E89094C44Da98b954EedeAC495271d0F/500
-      #   apy: "{{UNISWAP_APR}}%"
-      #   apy_title: "FLX APR"
-      #   apy_description: "{{UNISWAP_APR_DESC}}"
-      #   optional:
-      #     Current state: "RAI redemption price: {{UNISWAP_V3_RAI_REDEMPTION_PRICE}}, RAI market price:  {{UNISWAP_V3_RAI_MARKET_PRICE}}"
-      #     Optimal range: "{{UNISWAP_V3_OPTIMAL}}"
-      #     Recommended range: "{{UNISWAP_V3_RECOMMENDED}}"
+      - until: Ongoing
+        amount: 20 FLX/day
+        name: Uniswap V3 RAI/ETH Full range LP
+        image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
+        description: Full range LPs of the 0.05% Uniswap v3 RAI/ETH Pool.
+        link: https://app.uniswap.org/add/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/ETH/500?minPrice=0.0000000000000000000000000000000000000029395&maxPrice=340190000000000000000000000000000000000
+        # TODO: Calculation of the full range APYs
+        # apy: "{{UNISWAP_APR}}%"
+        # apy_title: "FLX APR"
+        # apy_description: "{{UNISWAP_APR_DESC}}"
+        
+        optional:
+          Current state: "RAI redemption price: {{UNISWAP_V3_RAI_REDEMPTION_PRICE}}, RAI market price:  {{UNISWAP_V3_RAI_MARKET_PRICE}}"
+          # Optimal range: "{{UNISWAP_V3_OPTIMAL}}"
+          # Recommended range: "{{UNISWAP_V3_RECOMMENDED}}"
 
       - until: Ongoing
-        amount: 30 FLX/day
+        amount: 20 FLX/day
         name: Uniswap V2 RAI/ETH LP
         image: https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg
         description: LP in the Uniswap v2 RAI/ETH Pool. More <a href="https://docs.reflexer.finance/incentives/rai-mint-+-lp-incentives-program" target="_blank">here</a>
@@ -41,14 +43,12 @@ rounds:
       #   apy_description: "FLX APR only, does not include fee revenue and potential impermanent loss."
       #   optional:
       #     Pool size: ${{FLX_STAKING_POOL_SIZE}}
-
       # - until: Ongoing
       #   amount: 20 FLX/day
       #   name: Curve Finance
       #   image: https://images.ctfassets.net/zql9qw49kkiw/2Blf7JTMfHaPK5RBGrTxl1/e2a59ed15d33012d1f7ca897129eef04/curve-logo.png?h=250
       #   description: RAI LPs on curve, direct holders of the RAI-3CRV LP token only (Convex unsupported).
       #   link: https://curve.fi/rai/deposit
-
       - until: Ongoing
         amount: Variable CRV & CVX rewards
         name: Convex Finance
@@ -59,9 +59,6 @@ rounds:
         # apy_title: "CRV+CVX APR"
         # apy_description: "Current APR from Convex, includes base pool APR, CRV APR, CVX APR and substract Convex admin fees"
 
-
-
-
       # - until: Ongoing
       #   amount: 10 FLX/day
       #   name: Aave
@@ -69,62 +66,59 @@ rounds:
       #   description: RAI borrowers on Aave v2
       #   link: https://app.aave.com/reserve-overview/?underlyingAsset=0x03ab458634910aad20ef5f1c8ee96f1d6ac54919&marketName=proto_mainnet
       #   apy: "{{AAVE_FLX_APR}}%"
-      #   apy_title: "FLX APR"  
+      #   apy_title: "FLX APR"
       #   apy_description: "Assuming 65% LTV, not including borrow APY"
       #   optional:
       #     Total RAI borrows: "${{AAVE_RAI_POOL_SIZE}}"
       #     RAI supply APY: "{{AAVE_RAI_SUPPLY_APY}}%"
       #     RAI borrow APY: "{{AAVE_RAI_BORROW_APY}}%"
-      
+
       - until: Ongoing
         amount: Variable POLLY rewards
-        name: Polly Finance 
+        name: Polly Finance
         image: "https://images.ctfassets.net/zql9qw49kkiw/66lq8ZZ0EysBYRLB2wR0V3/4dbe7bd3301a1f8b5d1a56c55811e6f2/logo.ea3bdc41.svg"
         description: RAI farms on Polly Finance. More info <a href="https://docs.bao.finance/franchises/polly/contracts-and-key-info#tokens" target="_blank">here</a>.
         link: https://pollyfinance.com/farms?ref=null
-      
+
       - until: Ongoing
-        amount:  Variable MPH rewards 
-        name: 88mph 
+        amount: Variable MPH rewards
+        name: 88mph
         image: "https://images.ctfassets.net/zql9qw49kkiw/1jFpRuZGHZ1lrQnVOwPzaU/452c0d22d1673e2a89c6711d629eca09/88-logo.jpg"
         description: RAI depositors on 88mph fix yield lending.
         link: https://88mph.app/earn
 
-        
 uniV3PoolConfig:
-    - pair: "RAI/DAI"
-      ranges:
-        wide:
-          upperTick: 11040
-          lowerTick: 10980
-          apr: "{{R2_UNISWAP_APR_NO_DETAIL}}"
-        tight:
-          upperTick: 11020
-          lowerTick: 11000
-          apr: "{{R3_UNISWAP_APR_NO_DETAIL}}"
-      token0: "0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919"
-      token1: "0x6B175474E89094C44Da98b954EedeAC495271d0F"
-      fee: 500
-    - pair: "RAI/ETH"
-      ranges:
-        wide:
-          upperTick: -69160
-          lowerTick: -69640
-          apr: "{{R2_UNISWAP_APR_NO_DETAIL}}"
-        tight:
-          upperTick: -68680
-          lowerTick: -70120
-          apr: "{{R3_UNISWAP_APR_NO_DETAIL}}"
-      token0: "0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919"
-      token1: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
-      fee: 3000
-  
+  - pair: "RAI/DAI"
+    ranges:
+      wide:
+        upperTick: 11040
+        lowerTick: 10980
+        apr: "{{R2_UNISWAP_APR_NO_DETAIL}}"
+      tight:
+        upperTick: 11020
+        lowerTick: 11000
+        apr: "{{R3_UNISWAP_APR_NO_DETAIL}}"
+    token0: "0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919"
+    token1: "0x6B175474E89094C44Da98b954EedeAC495271d0F"
+    fee: 500
+  - pair: "RAI/ETH"
+    ranges:
+      wide:
+        upperTick: -69160
+        lowerTick: -69640
+        apr: "{{R2_UNISWAP_APR_NO_DETAIL}}"
+      tight:
+        upperTick: -68680
+        lowerTick: -70120
+        apr: "{{R3_UNISWAP_APR_NO_DETAIL}}"
+    token0: "0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919"
+    token1: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+    fee: 3000
 
   # Other rounds...
   # - number: 3
   #   name: Round 3
   #   snapshotDate: 2021-06-17T12:50Z
   #   distributionDate: 2021-06-22
-  #   starMessage: "* Ruler rewards will be distributed by the Ruler team"  
+  #   starMessage: "* Ruler rewards will be distributed by the Ruler team"
   #   distros: []
-      
