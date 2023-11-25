@@ -1,0 +1,60 @@
+{
+  "id": "doc",
+  "data": {
+    "uniV3PoolConfig": [
+      {
+        "token1": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+        "ranges": {
+          "wide": { "upperTick": 11040, "lowerTick": 10980, "apr": "136.35" },
+          "tight": { "upperTick": 11020, "lowerTick": 11000, "apr": "136.35" }
+        },
+        "pair": "RAI/DAI",
+        "token0": "0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919",
+        "fee": 500
+      },
+      {
+        "token1": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "ranges": {
+          "wide": { "upperTick": -69160, "lowerTick": -69640, "apr": "136.35" },
+          "tight": { "upperTick": -68680, "lowerTick": -70120, "apr": "136.35" }
+        },
+        "pair": "RAI/ETH",
+        "token0": "0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919",
+        "fee": 3000
+      }
+    ],
+    "rounds": [
+      {
+        "name": "Current RAI Incentives",
+        "snapshotDate": "2023-12-15T12:50Z",
+        "number": 33,
+        "distros": [
+          {
+            "image": "https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg",
+            "amount": "20 FLX/day",
+            "apy_title": "FLX APR",
+            "name": "Uniswap V2 RAI/ETH LP",
+            "link": "https://app.uniswap.org/#/add/v2/0x03ab458634910aad20ef5f1c8ee96f1d6ac54919/ETH",
+            "description": "LP in the Uniswap v2 RAI/ETH Pool. More <a href=\"https://docs.reflexer.finance/incentives/rai-mint-+-lp-incentives-program\" target=\"_blank\">here</a>",
+            "until": "12/15/2023",
+            "optional": { "Pool size": "$1.31m" },
+            "apy": "N/A",
+            "apy_description": "Not including Uniswap fees revenue."
+          },
+          {
+            "image": "https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg",
+            "amount": "20 FLX/day",
+            "apy_title": "FLX APR",
+            "name": "Uniswap V3 RAI/ETH LP",
+            "link": "https://app.uniswap.org/add/0x03ab458634910aad20ef5f1c8ee96f1d6ac54919/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2/500?minPrice=0.0000000000000000000000000000000000000029395&maxPrice=340190000000000000000000000000000000000",
+            "description": "LP in the Uniswap v3 RAI/ETH Pool. More <a href=\"https://docs.reflexer.finance/incentives/rai-eth-uniswap-v3-oracle-lp-incentives-program\" target=\"_blank\">here</a>",
+            "until": "12/15/2023",
+            "optional": { "Pool size": "$102k" },
+            "apy": "N/A",
+            "apy_description": "Not including Uniswap fees revenue."
+          }
+        ]
+      }
+    ]
+  }
+}
