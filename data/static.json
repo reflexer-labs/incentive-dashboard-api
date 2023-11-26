@@ -46,7 +46,7 @@
             "amount": "20 FLX/day",
             "apy_title": "FLX APR",
             "name": "Uniswap V3 RAI/ETH LP",
-            "link": "https://app.uniswap.org/add/0x03ab458634910aad20ef5f1c8ee96f1d6ac54919/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2/500?minPrice=0.0000000000000000000000000000000000000029395&maxPrice=340190000000000000000000000000000000000",
+            "link": "https://app.uniswap.org/add/0x03ab458634910aad20ef5f1c8ee96f1d6ac54919/ETH/500?minPrice=0.0000000000000000000000000000000000000029395&maxPrice=340190000000000000000000000000000000000",
             "description": "LP in the Uniswap v3 RAI/ETH Pool. More <a href=\"https://docs.reflexer.finance/incentives/rai-eth-uniswap-v3-oracle-lp-incentives-program\" target=\"_blank\">here</a>",
             "until": "12/15/2023",
             "optional": { "Pool size": "$102k" },
