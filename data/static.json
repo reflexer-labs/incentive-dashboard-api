@@ -26,30 +26,18 @@
     "rounds": [
       {
         "name": "Current RAI Incentives",
-        "snapshotDate": "2023-12-15T12:50Z",
-        "number": 33,
+        "snapshotDate": "2024-1-15T12:50Z",
+        "number": 34,
         "distros": [
           {
             "image": "https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg",
-            "amount": "20 FLX/day",
-            "apy_title": "FLX APR",
-            "name": "Uniswap V2 RAI/ETH LP",
-            "link": "https://app.uniswap.org/#/add/v2/0x03ab458634910aad20ef5f1c8ee96f1d6ac54919/ETH",
-            "description": "LP in the Uniswap v2 RAI/ETH Pool. More <a href=\"https://docs.reflexer.finance/incentives/rai-mint-+-lp-incentives-program\" target=\"_blank\">here</a>",
-            "until": "12/15/2023",
-            "optional": { "Pool size": "$1.31m" },
-            "apy": "N/A",
-            "apy_description": "Not including Uniswap fees revenue."
-          },
-          {
-            "image": "https://images.ctfassets.net/zql9qw49kkiw/gODeJOOfrFIXz5pGXkNVO/df191e8900a2e9c9c868344b874c09ea/uniswap.svg",
-            "amount": "20 FLX/day",
+            "amount": "30 FLX/day",
             "apy_title": "FLX APR",
             "name": "Uniswap V3 RAI/ETH LP",
             "link": "https://app.uniswap.org/add/0x03ab458634910aad20ef5f1c8ee96f1d6ac54919/ETH/500?minPrice=0.0000000000000000000000000000000000000029395&maxPrice=340190000000000000000000000000000000000",
-            "description": "LP in the Uniswap v3 RAI/ETH Pool. More <a href=\"https://docs.reflexer.finance/incentives/rai-eth-uniswap-v3-oracle-lp-incentives-program\" target=\"_blank\">here</a>",
-            "until": "12/15/2023",
-            "optional": { "Pool size": "$102k" },
+            "description": "LP in the Uniswap v3 RAI/ETH Pool at full range. More <a href=\"https://docs.reflexer.finance/incentives/rai-eth-uniswap-v3-oracle-lp-incentives-program\" target=\"_blank\">here</a>",
+            "until": "1/15/2024",
+            "optional": { "Pool size": "$951k" },
             "apy": "N/A",
             "apy_description": "Not including Uniswap fees revenue."
           }
